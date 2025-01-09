@@ -1,0 +1,63 @@
+
+.container-destination {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.titre1 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
+}
+
+.destination-card {
+    border: 2px solid #ac1e44;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #F9F9F9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.destination-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.titre2 {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.lien {
+    font-size: 18px;
+    color: #fff;
+    background-color: #ac1e44;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.lien:hover {
+    background-color: #B6005E;
+}
+
+.buttonDecouvrirSejour {
+    margin-top: 25px;
+    font-weight: bold;
+    border: solid #3d2c2c;
+    color: #3d2c2c;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+}

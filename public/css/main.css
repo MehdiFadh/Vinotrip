@@ -1,0 +1,812 @@
+/* Conteneurs principaux */
+.container-inscription,
+.container-verification,
+.container-account {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titres principaux */
+.container-inscription h2,
+.container-verification h2,
+.container-account h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Groupes de champs */
+.form-group-inscription,
+.form-group-verification,
+.form-group-account {
+    margin-bottom: 15px;
+}
+
+.form-group-inscription label,
+.form-group-verification label,
+.form-group-account label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group-inscription input,
+.form-group-verification input,
+.form-group-account input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group-inscription input:focus,
+.form-group-verification input:focus,
+.form-group-account input:focus {
+    border-color: #ac1e44;
+    outline: none;
+    box-shadow: 0 0 4px #910f36a6;
+}
+
+/* Champs invalides */
+.is-invalid {
+    border-color: #d9534f;
+    box-shadow: 0 0 5px rgba(217, 83, 79, 0.5);
+}
+
+/* Boutons */
+.btn-connexion,
+.btn-paiement,
+.btn-inscription,
+.btn-verification,
+.btn-account {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ac1e44;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-connexion:hover,
+.btn-paiement:hover,
+.btn-inscription:hover,
+.btn-verification:hover,
+.btn-account:hover {
+    background-color: #910f36;
+}
+
+/* Alertes générales */
+.alert-inscription,
+.alert-verification,
+.alert-account {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.alert-inscription.success,
+.alert-verification.success,
+.alert-account.success {
+    background-color: #d4edda; /* Vert clair */
+    color: #155724; /* Vert foncé */
+    border: 1px solid #c3e6cb;
+}
+
+.alert-inscription.error,
+.alert-verification.error,
+.alert-account.error {
+    background-color: #f8d7da; /* Rouge clair */
+    color: #721c24; /* Rouge foncé */
+    border: 1px solid #f5c6cb;
+}
+
+/* Icônes */
+.alert-inscription i,
+.alert-verification i,
+.alert-account i {
+    margin-right: 10px;
+}
+
+/* Lien vers une autre page */
+.link-connexion {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-connexion p {
+    font-size: 16px;
+    color: #555;
+}
+
+.link-connexion a {
+    color: #ac1e44;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-connexion a:hover {
+    text-decoration: underline;
+    color: #910f36;
+}
+
+/* Boutons pour cave/hôtel */
+.cave-detail-container a,
+.hotel-detail-container a {
+    display: block;
+    margin: 20px auto;
+    background-color: #ac1e44;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    width: 25%;
+}
+
+.cave-detail-container a:hover,
+.hotel-detail-container a:hover {
+    background-color: #910f36;
+}
+
+/* Images pour les étapes */
+.img-etape {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+}
+/* Style pour le bandeau de succès */
+.alert-paiement-success {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Style pour le bandeau d'erreur */
+.alert-paiement-erreur {
+    background-color: #dc3545;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+.custom-alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-alert-icon {
+    font-size: 18px;
+}
+
+.success-alert {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 5px solid #28a745;
+}
+
+.error-alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 5px solid #dc3545;
+}
+
+.info-alert {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-left: 5px solid #17a2b8;
+}
+/* Conteneur principal du message */
+.message-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre et étiquette du formulaire */
+.message-label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;  /* Aligne le texte à gauche pour plus de lisibilité */
+}
+
+/* Zone de texte pour le message */
+.message-textarea {
+    width: 100%;
+    height: 120px; /* Un peu plus grande pour plus de confort */
+    padding: 12px; /* Augmenter l'espace pour le confort */
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: vertical; /* Permet de redimensionner uniquement verticalement */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-textarea:focus {
+    border-color: #ac1e44;
+    outline: none;
+    box-shadow: 0 0 4px rgba(169, 30, 68, 0.5);
+}
+
+/* Bouton d'enregistrement du message */
+.btn-save-message {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ac1e44;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;  /* Aligne le texte du bouton */
+}
+
+.btn-save-message:hover {
+    background-color: #910f36;
+    transform: scale(1.02); /* Effet de mise en avant */
+}
+
+.btn-save-message:active {
+    background-color: #7e0d2e; /* Couleur plus sombre pour le clic */
+    transform: scale(0.98); /* Légère réduction pour effet de clic */
+}
+/* Conteneur pour chaque étape */
+.etape-item {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre et description de l'étape */
+.etape-title {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+/* Conteneur pour l'image de l'étape */
+.etape-image-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Image de l'étape */
+.img-etape {
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Liste des partenaires associés à l'étape */
+.partenaire-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Élément individuel de partenaire */
+.partenaire-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Information sur chaque partenaire */
+.partenaire-info {
+    margin-bottom: 10px;
+}
+
+/* Nom du partenaire */
+.partenaire-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Description du partenaire */
+.partenaire-description {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+/* Message "Pas plus de détails" */
+.no-details {
+    font-size: 1.1rem;
+    color: #ac1e44;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+}
+/* Container global pour les commandes */
+.account-orders {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal des commandes */
+.account-orders-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Section des commandes individuelles */
+.orders-section {
+    margin-bottom: 30px;
+}
+
+/* Titre de chaque section (Commandes Cadeaux / Effectifs) */
+.orders-section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #5a5a5a;
+}
+
+/* Liste des commandes */
+.orders-section-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Élément de chaque commande */
+.orders-section-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre de chaque commande */
+.orders-section-item-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Date de commande */
+.orders-section-item-date {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Code cadeau pour les commandes cadeaux */
+.orders-section-item-gift-code {
+    font-size: 1em;
+    color: #333;
+    margin-top: 8px;
+}
+
+/* Durée du séjour pour les commandes effectifs */
+.orders-section-item-duration {
+    font-size: 1em;
+    color: #333;
+    margin-top: 8px;
+}
+
+/* Message indiquant qu'il n'y a pas de commande */
+.orders-section-empty {
+    font-size: 1em;
+    color: #888;
+    font-style: italic;
+}
+.btn-log-out{
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #ac1e44;
+    border-radius: 5px;
+    width: 150px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+/* Conteneur principal pour la section des commandes */
+.container-commande-historique {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #f7f9fc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal pour l'historique des commandes */
+.titre-commande-historique {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* Description ou sous-titre sous le titre principal */
+.description-commande-historique {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* Tableau des commandes */
+.tableau-commande-historique {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+/* En-tête du tableau */
+.en-tete-tableau-commande {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.en-tete-tableau-commande th {
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+}
+
+/* Contenu des cellules du tableau */
+.cellule-tableau-commande,
+.cellule-en-tete-tableau-commande {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Lien vers les détails de la commande */
+.lien-details-commande {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.lien-details-commande:hover {
+    text-decoration: underline;
+}
+
+/* Badge indiquant le statut de la commande */
+.badge-commande-acceptee {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.badge-commande-en-attente {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* Bouton pour télécharger le PDF */
+.bouton-facture-pdf {
+    color: #d9534f;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bouton-facture-pdf:hover {
+    text-decoration: underline;
+}
+
+/* Texte pour une commande sans facture */
+.texte-commande-sans-facture {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Ligne indiquant aucune commande trouvée */
+.ligne-aucune-commande td {
+    font-style: italic;
+    color: #aaa;
+}
+
+/* Conteneur principal des détails de la commande */
+.container-details-commande {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal pour les détails de la commande */
+.titre-commande-details {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Informations générales de la commande */
+.info-commande-details {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Sous-titres des sections */
+.sous-titre-commande-details {
+    font-size: 1.5rem;
+    color: #444;
+    margin: 1.5rem 0 1rem;
+}
+
+/* Tableaux pour les données */
+.table-commande-details {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+/* En-tête des tableaux */
+.thead-commande-details {
+    background-color: #343a40;
+    color: white;
+    text-align: left;
+}
+
+.thead-commande-details th {
+    padding: 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Lignes et cellules des tableaux */
+.table-commande-details td,
+.table-commande-details th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Lignes alternées */
+.table-commande-details tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Texte pour les cellules vides ou non disponibles */
+.cellule-vide {
+    color: #999;
+    font-style: italic;
+}
+
+/* Lien pour les détails spécifiques */
+.lien-commande-details {
+    color: #ac1e44;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.lien-commande-details:hover {
+    text-decoration: underline;
+}
+
+/* Ligne sans données */
+.ligne-aucune-donnee td {
+    text-align: center;
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Style des sous-sections comme Effectifs et Cadeaux */
+.section-sous-details {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+}
+
+.section-sous-details h4 {
+    margin-bottom: 1rem;
+    color: #555;
+    font-size: 1.3rem;
+}
+
+/* Bouton ou lien pour des fichiers */
+.bouton-lien-details {
+    color: #d9534f;
+    font-size: 1rem;
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.bouton-lien-details:hover {
+    background-color: #f8d7da;
+    border-radius: 4px;
+}
+/* Styles pour le formulaire de création de séjour */
+.form-container-sejour-creation {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-title-sejour-creation {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.sejour-form-create {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group-sejour-create {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label-sejour-create {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-control-sejour-create {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.form-control-sejour-create:focus {
+    border-color: #ac1e44;
+    outline: none;
+}
+
+.error-message-sejour-create {
+    font-size: 0.9em;
+    color: #dc3545;
+}
+
+.btn-submit-sejour-create {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    background-color: #ac1e44;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit-sejour-create:hover {
+    background-color: #910f36;
+}
+/* Conteneur pour l'icône avec cercle */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Cercle blanc autour de l'icône avec centrage de l'icône */
+.tooltip-container i {
+    font-size: 18px; 
+    color: #ac1e44; /* Couleur de l'icône */
+    background-color: #fff; /* Fond blanc pour le cercle */
+    border-radius: 50%; /* Forme circulaire */
+    border: solid 2px #ac1e44; /* Bordure colorée pour l'icône */
+    padding: 6px; /* Taille du cercle, ajustez pour augmenter/diminuer */
+    margin: 15px;
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    width: 12px; /* Largeur du cercle, ajustez si nécessaire */
+    height: 12px; /* Hauteur du cercle, ajustez si nécessaire */
+}
+
+/* Bulle d'information */
+.tooltip-container .tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position au-dessus de l'élément */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Flèche sous la bulle */
+.tooltip-container .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Pointe de la bulle */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* Affichage de la bulle au survol */
+.tooltip-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Effet au survol de l'icône */
+.informations-supplémentaires:hover {
+    color: #910f36; 
+}

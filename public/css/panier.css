@@ -1,0 +1,145 @@
+/* Conteneur principal du panier */
+.panier-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Chaque item dans le panier */
+.panier-item {
+    display: flex;
+    align-items: center; /* Centre verticalement */
+    gap: 20px; /* Espacement entre l'image et les détails */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Image de l'article */
+.panier-item-image {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover; /* Maintient les proportions de l'image */
+}
+
+/* Détails de l'article */
+.panier-item-details {
+    flex: 1; /* Prend l'espace disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre verticalement */
+    gap: 10px;
+}
+
+/* Prix total par article */
+.panier-item-price {
+    font-weight: bold;
+    color: #ac1e44;
+    margin-top: 10px;
+}
+
+/* Formulaire pour modifier le panier */
+.panier-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.panier-form label {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.panier-form-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+}
+
+/* Boutons généraux */
+.btn-edit,
+.btn-suppr {
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+    background-color: #ac1e44;
+    margin-bottom: 20px;
+}
+
+.btn-edit:hover {
+    background-color: #910f36;
+}
+
+.btn-suppr {
+    background-color: #ac1e44; /* Rouge */
+}
+
+.btn-suppr:hover {
+    background-color: #910f36;
+}
+
+/* Centrage des boutons d'action */
+.panier-actions-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    gap: 15px; /* Espacement entre les boutons */
+    margin-top: 20px;
+}
+
+/* Boutons principaux (connexion/paiement) */
+.btn-main {
+    padding: 12px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #ac1e44; /* Couleur principale */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-main:hover {
+    background-color: #910f36;
+}
+
+/* Titre principal */
+.panier-title {
+    text-align: center;
+    margin: 20px auto;
+    font-size: 1.8em;
+    color: #333;
+}
+
+/* Message quand le panier est vide */
+.panier-empty-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 40px;
+}
+
+/* Alignement des actions globales */
+.panier-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+}

@@ -1,0 +1,291 @@
+
+/* Séjour Details Container */
+.sejour-detail-container {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px; /* Limite la largeur totale */
+
+}
+
+.sejour-detail-container h1 {
+    font-size: 2rem;
+    color: #004d61;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sejour-detail-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin: 0 auto; /* Centre l'image */
+}
+
+.sejour-detail-container .descr {
+    width: auto;
+    display: inline-block; /* Prend la largeur naturelle du contenu */
+    text-align: left;
+    margin-top: 10px;
+    padding: 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Reservation Button */
+.sejour-detail-container button {
+    display: block;
+    background-color: #ac1e44;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 20px auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.sejour-detail-container #reserver {
+    display: block;
+    background-color: #ac1e44;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 20px auto;
+    margin-left: 40%;
+    margin-right: 40%;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.sejour-detail-container a{
+    color: #fff;
+}
+
+.sejour-detail-container button:hover,.sejour-detail-container #reserver:hover {
+    background-color: #ac1e44c7;
+}
+.descr{
+    text-align: center;
+    border: solid 3px #ac1e44;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* Avis Section */
+.sejour-detail-container h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    color: #333;
+    text-align: center;
+}
+.hotels-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hotels-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hotels-container li {
+    background-color: #f9f9f9; /* Fond clair */
+    border: 1px solid #ddd; /* Bordure légère */
+    padding: 20px;
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre douce autour du cadre */
+    transition: transform 0.3s ease-in-out; /* Effet d'animation */
+}
+
+.hotels-container li:hover {
+    transform: scale(1.02); /* Effet d'agrandissement au survol */
+}
+
+.hotels-container li strong {
+    font-size: 1.2rem;
+    color: #333; /* Couleur du texte du nom */
+    display: block;
+    margin-bottom: 10px;
+}
+
+.hotels-container li span {
+    font-size: 1rem;
+    color: #555; /* Couleur du texte secondaire */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.hotels-container li p {
+    font-size: 0.9rem;
+    color: #999; /* Couleur pour le texte "Aucun hôtel associé" */
+}
+
+.hotels-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.avis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Deux colonnes adaptatives */
+    gap: 20px; /* Espace entre les avis */
+    margin-top: 20px;
+
+}
+
+.avis {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.avis p {
+    margin-bottom: 10px;
+}
+
+.avis p strong {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.avis p em {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.caves-container, .cave-detail-container {
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.caves-container h3, .cave-detail-container h1 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.caves-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.caves-container li {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.caves-container button, .cave-detail-container button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.caves-container button:hover, .cave-detail-container button:hover {
+    background-color: #0056b3;
+}
+.etapes-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.etapes-container h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.etapes-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.etapes-container ul li {
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.etapes-container ul li strong {
+    font-size: 1.2em;
+    color: #444;
+}
+#date,#adultes,#chambres,#enfants{
+    width: 100%; /* Ajuste la largeur à 100% du conteneur parent */
+    max-width: 180px; /* Définit une largeur maximale pour éviter des champs trop longs */
+    padding: 8px; /* Ajoute de l'espace intérieur */
+    border: 1px solid #ccc; /* Ajoute une bordure */
+    border-radius: 4px; /* Adoucit les coins */
+    box-sizing: border-box; /* Inclut le padding dans la largeur */
+}
+.options-section {
+    margin-top: 20px;
+   
+}
+
+.options-table {
+    width: 100%;
+    border-spacing: 15px 10px;
+}
+
+.options-table td {
+    vertical-align: top;
+    text-align: left;
+}
+
+.radio-group {
+    margin-top: 5px;
+}
+
+.radio-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.total-section {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #880E4F; /* Couleur pour correspondre au design */
+    text-align: center;
+}
+
+.reservation-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.reservation-button button {
+    background-color: #880E4F;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}

@@ -1,0 +1,244 @@
+
+.sejour-container-sejour ul{
+    list-style: none;
+}
+/* En-tête */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2.5rem;
+    color: #333;
+}
+.route-details{
+    margin-left: 5%;
+
+}
+.sejour-container-sejour p {
+    border-bottom: solid ;
+    padding-bottom: 15px;
+    border-color: #ac1e44;
+}
+.select{
+    color: #555;
+    font-size: 18px;
+}
+
+/* Liste principale */
+.sejour-liste-sejour {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.btnDestination-sejour, .btnRechercher-sejour, .btnParticipant-sejour, .btnCategorie-sejour  {
+    border-radius: 10px;
+    height: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Chaque séjour */
+.sejour-case {
+    background-color: #F0EEEC;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+
+.sejour-case:hover {
+    transform: scale(1.02);
+    border: solid #333;
+    .buttonDecouvrirSejour {
+        margin-top: 25px;
+        font-weight: bold;
+        background-color: #3d2c2c;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+/* Détails de chaque séjour */
+.descriptionSejour {
+    margin-top: 10px;
+    color: black;
+}
+
+.titreSejour {
+    font-size: 1.6rem;
+    color: #ac1e44;
+    margin: 0;
+    margin-bottom: 10px;
+}
+/* Conteneur de la barre de recherche */
+.search-bar-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 20px; 
+    
+}
+
+
+/* Style de la barre de recherche */
+#searchBar {
+    padding: 8px 12px; /* Padding pour rendre le champ plus large */
+    font-size: 14px;
+    width: 300px; /* Définir une largeur pour l'input */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 4px; /* Coins arrondis */
+    margin-top: 2px;
+    height: 30px;
+}
+
+/* Style du bouton de recherche */
+#searchButton {
+    padding: 8px 15px; /* Padding pour rendre le bouton plus grand */
+    font-size: 14px; /* Taille du texte du bouton */
+    background-color: #ac1e44; /* Couleur de fond du bouton */
+    color: white; /* Texte en blanc */
+    border: none; /* Enlève la bordure par défaut */
+    cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+    transition: background-color 0.3s ease; /* Effet de transition pour un changement de couleur */
+    margin-left: 10px; /* Espacement entre la barre et le bouton */
+}
+
+/* Style du bouton au survol */
+#searchButton:hover {
+    background-color: #ac1e44c7; /* Couleur de fond lorsque le bouton est survolé */
+}
+
+/* Style du bouton lorsque l'on clique */
+#searchButton:active {
+    background-color: #ac1e4496; /* Couleur de fond lorsque le bouton est cliqué */
+}
+
+/* Partie des filtres */
+.filters-container-sejour {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    background-color: #3d2c2c;
+    padding: 20px;
+}
+
+
+/* Style pour la bordure et l'espacement */
+.sejour-container-sejour {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.lien-avis{
+    margin-left: 20px;
+}
+
+.sejour-liste-sejour {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes de largeur égale */
+    gap: 20px; /* Espacement entre les éléments */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sejour-case {
+    background-color: #f4f4f4; /* Fond léger pour les cases */
+    padding: 10px;
+    border-radius: 8px; /* Coins arrondis */
+    text-align: center;
+}
+
+.sejour-case img {
+    max-width: 100%; /* Assurez-vous que l'image occupe toute la largeur disponible */
+    border-radius: 8px; /* Coins arrondis pour les images */
+}
+
+.sejour-case h2 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.sejour-case ul {
+    list-style-type: none;
+    padding: 0;
+}
+.categorie-participant, .categorie-sejour{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: left;
+    font-size: 15px;
+}
+   
+.prix-sejour{
+    font-weight: 800;
+    font-size: 23px;
+    color: #ac1e44;
+    margin: 20px;
+}
+.description-sejour{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: left;
+    font-size: 15px;
+    color: #555;
+}
+.destination-sejour{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.buttonDecouvrirSejour {
+    margin-top: 25px;
+    font-weight: bold;
+    border: solid #3d2c2c;
+    color: #3d2c2c;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+}
+
+.etoiles {
+    display: inline-block;
+}
+
+.star {
+    font-size: 20px;
+    color: gold;
+}
+
+.star.empty {
+    color: #ccc; /* Couleur des étoiles vides */
+}
+
+.star.filled {
+    color: gold; /* Couleur des étoiles pleines */
+}
+
+
+.route_de_vins-details span{
+    text-transform: lowercase;
+}
+.vignobles{
+    margin-left: 20%;
+}
+#noResultsMessage {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #ffe6e6;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-align: center;
+}

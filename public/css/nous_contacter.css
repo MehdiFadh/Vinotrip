@@ -1,0 +1,78 @@
+/* Conteneur principal */
+.contact-form-container {
+    background-color: #F0EEEC;
+    border-radius: 50px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    width: center;
+    max-width: flex;
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+
+}
+
+/* Formulaire */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-size: 0.9rem;
+    color: #555;
+    display: block;
+    margin-bottom: 8px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    border-color: #ac1e44c7;
+    outline: none;
+}
+
+/* Bouton de soumission */
+.btn-submit {
+    background-color: #ac1e44;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: flex;
+}
+
+.btn-submit:hover {
+    background-color: #ac1e44c7;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}

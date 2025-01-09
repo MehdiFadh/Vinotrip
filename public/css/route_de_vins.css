@@ -1,0 +1,97 @@
+
+.route_de_vins-container ul{
+    list-style: none;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.route_de_vins-container p {
+    padding-bottom: 15px;
+   
+}
+
+/* Liste principale */
+.route_de_vins-liste {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Chaque séjour */
+.route_de_vins-case {
+    background-color: #F0EEEC;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.route_de_vins-case:hover {
+    transform: scale(1.02);
+    border: solid #333;
+    .buttonDecouvrirRoute_de_vins {
+        margin-top: 25px;
+        font-weight: bold;
+        background-color: #3d2c2c;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+/* Détails de chaque séjour */
+.description_route_de_vins {
+    margin-top: 10px;
+    color: black;
+}
+
+.route_de_vins-liste {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes de largeur égale */
+    gap: 20px; /* Espacement entre les éléments */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.route_de_vins-case {
+    background-color: #f4f4f4; /* Fond léger pour les cases */
+    padding: 10px;
+    border-radius: 8px; /* Coins arrondis */
+    text-align: center;
+}
+
+.route_de_vins-case img {
+    max-width: 100%; /* Assurez-vous que l'image occupe toute la largeur disponible */
+    border-radius: 8px; /* Coins arrondis pour les images */
+}
+
+.route_de_vins-case h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.route_de_vins-case ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.description_route_de_vins{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: left;
+    font-size: 15px;
+    color: #555;
+}
+
+
+.buttonDecouvrirRoute_de_vins {
+    margin-top: 25px;
+    font-weight: bold;
+    border: solid #3d2c2c;
+    color: #3d2c2c;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+}
