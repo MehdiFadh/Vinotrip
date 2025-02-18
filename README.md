@@ -1,10 +1,11 @@
-
+Page d'accueill
 
 ![Page d'accueill](screenshot1.png)
 
 
+Page tous les séjours
 
-
+![Page des séjours](screenshot2.png)
 
 
 
