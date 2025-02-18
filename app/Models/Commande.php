@@ -59,6 +59,10 @@ class Commande extends Model
     {
         return $this->hasMany(CommandeEffectif::class, 'numcommande', 'numcommande');
     }
+    public function ChequeCadeau()
+    {
+        return $this->hasMany(ChequeCadeau::class, 'numcommande', 'numcommande');
+    }
     public function facture()
     {
         return $this->hasOne(Facture::class, 'numcommande', 'numcommande');

@@ -9,9 +9,9 @@ class TypeDegustation extends Model
 {
     use HasFactory;
 
-    protected $table = 'type_degustation'; // Nom de la table
+    protected $table = 'type_degustation'; 
 
-    public $timestamps = false; // Pas de colonnes created_at ou updated_at
+    public $timestamps = false; 
 
     protected $primaryKey ='code_type_degustation';
 

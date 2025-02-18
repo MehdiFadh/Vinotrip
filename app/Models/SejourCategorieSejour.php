@@ -10,7 +10,6 @@ class SejourCategorieSejour extends Model
 
     protected $table = 'sejour_categorie_sejour';
 
-    // Relation inverse avec Séjour
     public function sejour()
     {
         return $this->belongsTo(Sejour::class);

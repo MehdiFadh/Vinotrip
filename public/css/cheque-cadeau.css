@@ -1,0 +1,93 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #990033;
+        }
+
+        .etapes {
+            margin-top: 20px;
+        }
+
+        .formulaire-groupe {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #50071f;
+            text-align: center;
+            border: none;
+            width: 50%;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+                
+        }
+
+        .btn:hover {
+            background-color: #760026;
+        }
+
+        .section-personnalisation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .section-personnalisation .btn {
+            width: 30%;
+            text-align: center;
+            background-color: #990033;
+        }
+
+        .texte-gris {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .radio-option input[type="radio"] {
+            margin-right: 10px; 
+        }

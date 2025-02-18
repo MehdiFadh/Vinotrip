@@ -1,4 +1,42 @@
-/* Conteneurs principaux */
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #241c1c;
+    color: #fff;
+    padding: 5vh;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.rubrique-droit {
+    display: flex; 
+    align-items: center; 
+    gap: 4vw; 
+    text-align: center;
+}
+
+.rubrique-droit a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1vw;
+    transition: color 0.3s ease;
+}
+
+.rubrique-droit a:hover {
+    color: #ac1e44;
+}
+
+
+
+
+
 .container-inscription,
 .container-verification,
 .container-account {
@@ -10,7 +48,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Titres principaux */
+
 .container-inscription h2,
 .container-verification h2,
 .container-account h2 {
@@ -20,7 +58,8 @@
     margin-bottom: 20px;
 }
 
-/* Groupes de champs */
+
+
 .form-group-inscription,
 .form-group-verification,
 .form-group-account {
@@ -57,13 +96,13 @@
     box-shadow: 0 0 4px #910f36a6;
 }
 
-/* Champs invalides */
+
 .is-invalid {
     border-color: #d9534f;
     box-shadow: 0 0 5px rgba(217, 83, 79, 0.5);
 }
 
-/* Boutons */
+
 .btn-connexion,
 .btn-paiement,
 .btn-inscription,
@@ -72,6 +111,7 @@
     display: block;
     width: 100%;
     padding: 10px;
+    margin-bottom: 10px;
     font-size: 16px;
     font-weight: bold;
     color: #fff;
@@ -89,7 +129,7 @@
     background-color: #910f36;
 }
 
-/* Alertes générales */
+
 .alert-inscription,
 .alert-verification,
 .alert-account {
@@ -104,27 +144,27 @@
 .alert-inscription.success,
 .alert-verification.success,
 .alert-account.success {
-    background-color: #d4edda; /* Vert clair */
-    color: #155724; /* Vert foncé */
+    background-color: #d4edda;
+    color: #155724; 
     border: 1px solid #c3e6cb;
 }
 
 .alert-inscription.error,
 .alert-verification.error,
 .alert-account.error {
-    background-color: #f8d7da; /* Rouge clair */
-    color: #721c24; /* Rouge foncé */
+    background-color: #f8d7da; 
+    color: #721c24; 
     border: 1px solid #f5c6cb;
 }
 
-/* Icônes */
+
 .alert-inscription i,
 .alert-verification i,
 .alert-account i {
     margin-right: 10px;
 }
 
-/* Lien vers une autre page */
+
 .link-connexion {
     text-align: center;
     margin-top: 20px;
@@ -146,7 +186,7 @@
     color: #910f36;
 }
 
-/* Boutons pour cave/hôtel */
+
 .cave-detail-container a,
 .hotel-detail-container a {
     display: block;
@@ -169,13 +209,13 @@
     background-color: #910f36;
 }
 
-/* Images pour les étapes */
+
 .img-etape {
     width: 300px;
     display: block;
     margin: 0 auto;
 }
-/* Style pour le bandeau de succès */
+
 .alert-paiement-success {
     background-color: #28a745;
     color: white;
@@ -184,7 +224,7 @@
     text-align: center;
 }
 
-/* Style pour le bandeau d'erreur */
+
 .alert-paiement-erreur {
     background-color: #dc3545;
     color: white;
@@ -226,7 +266,7 @@
     color: #0c5460;
     border-left: 5px solid #17a2b8;
 }
-/* Conteneur principal du message */
+
 .message-container {
     max-width: 600px;
     margin: 20px auto;
@@ -236,26 +276,26 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre et étiquette du formulaire */
+
 .message-label {
     display: block;
     font-size: 16px;
     font-weight: bold;
     color: #555;
     margin-bottom: 10px;
-    text-align: left;  /* Aligne le texte à gauche pour plus de lisibilité */
+    text-align: left; 
 }
 
-/* Zone de texte pour le message */
+
 .message-textarea {
     width: 100%;
-    height: 120px; /* Un peu plus grande pour plus de confort */
-    padding: 12px; /* Augmenter l'espace pour le confort */
+    height: 120px; 
+    padding: 12px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    resize: vertical; /* Permet de redimensionner uniquement verticalement */
+    resize: vertical;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -265,7 +305,7 @@
     box-shadow: 0 0 4px rgba(169, 30, 68, 0.5);
 }
 
-/* Bouton d'enregistrement du message */
+
 .btn-save-message {
     display: block;
     width: 100%;
@@ -279,19 +319,19 @@
     cursor: pointer;
     margin-top: 15px;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    text-align: center;  /* Aligne le texte du bouton */
+    text-align: center;
 }
 
 .btn-save-message:hover {
     background-color: #910f36;
-    transform: scale(1.02); /* Effet de mise en avant */
+    transform: scale(1.02);
 }
 
 .btn-save-message:active {
-    background-color: #7e0d2e; /* Couleur plus sombre pour le clic */
-    transform: scale(0.98); /* Légère réduction pour effet de clic */
+    background-color: #7e0d2e;
+    transform: scale(0.98);
 }
-/* Conteneur pour chaque étape */
+
 .etape-item {
     background-color: #f8f8f8;
     border-radius: 8px;
@@ -300,20 +340,20 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre et description de l'étape */
+
 .etape-title {
     font-size: 1.5rem;
     color: #34495e;
     margin-bottom: 15px;
 }
 
-/* Conteneur pour l'image de l'étape */
+
 .etape-image-container {
     text-align: center;
     margin-bottom: 15px;
 }
 
-/* Image de l'étape */
+
 .img-etape {
     width: 50%;
     max-width: 400px;
@@ -321,14 +361,14 @@
     border-radius: 5px;
 }
 
-/* Liste des partenaires associés à l'étape */
+
 .partenaire-list {
     list-style-type: none;
     padding: 0;
     margin-top: 20px;
 }
 
-/* Élément individuel de partenaire */
+
 .partenaire-item {
     display: flex;
     flex-direction: column;
@@ -339,25 +379,25 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Information sur chaque partenaire */
+
 .partenaire-info {
     margin-bottom: 10px;
 }
 
-/* Nom du partenaire */
+
 .partenaire-name {
     font-size: 1.2rem;
     font-weight: bold;
     color: #2c3e50;
 }
 
-/* Description du partenaire */
+
 .partenaire-description {
     font-size: 1rem;
     color: #7f8c8d;
 }
 
-/* Message "Pas plus de détails" */
+
 .no-details {
     font-size: 1.1rem;
     color: #ac1e44;
@@ -365,7 +405,7 @@
     text-align: center;
     margin-top: 20px;
 }
-/* Container global pour les commandes */
+
 .account-orders {
     background-color: #f9f9f9;
     padding: 20px;
@@ -373,7 +413,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre principal des commandes */
+
 .account-orders-title {
     font-size: 1.5em;
     color: #333;
@@ -381,12 +421,12 @@
     font-weight: bold;
 }
 
-/* Section des commandes individuelles */
+
 .orders-section {
     margin-bottom: 30px;
 }
 
-/* Titre de chaque section (Commandes Cadeaux / Effectifs) */
+
 .orders-section-title {
     font-size: 1.2em;
     font-weight: bold;
@@ -394,13 +434,13 @@
     color: #5a5a5a;
 }
 
-/* Liste des commandes */
+
 .orders-section-list {
     list-style: none;
     padding: 0;
 }
 
-/* Élément de chaque commande */
+
 .orders-section-item {
     background-color: #fff;
     padding: 15px;
@@ -409,34 +449,33 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre de chaque commande */
+
 .orders-section-item-title {
     font-size: 1.1em;
     font-weight: bold;
     color: #333;
 }
 
-/* Date de commande */
+
 .orders-section-item-date {
     font-size: 0.9em;
     color: #888;
 }
 
-/* Code cadeau pour les commandes cadeaux */
+
 .orders-section-item-gift-code {
     font-size: 1em;
     color: #333;
     margin-top: 8px;
 }
 
-/* Durée du séjour pour les commandes effectifs */
 .orders-section-item-duration {
     font-size: 1em;
     color: #333;
     margin-top: 8px;
 }
 
-/* Message indiquant qu'il n'y a pas de commande */
+
 .orders-section-empty {
     font-size: 1em;
     color: #888;
@@ -453,7 +492,7 @@
     padding-bottom: 3px;
     padding-top: 3px;
 }
-/* Conteneur principal pour la section des commandes */
+
 .container-commande-historique {
     margin: 0 auto;
     padding: 20px;
@@ -463,7 +502,7 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre principal pour l'historique des commandes */
+
 .titre-commande-historique {
     font-size: 2.5rem;
     color: #333;
@@ -471,21 +510,21 @@
     margin-bottom: 1.5rem;
 }
 
-/* Description ou sous-titre sous le titre principal */
+
 .description-commande-historique {
     font-size: 1.2rem;
     color: #555;
     margin-bottom: 2rem;
 }
 
-/* Tableau des commandes */
+
 .tableau-commande-historique {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1.5rem;
 }
 
-/* En-tête du tableau */
+
 .en-tete-tableau-commande {
     background-color: #343a40;
     color: #fff;
@@ -498,7 +537,7 @@
     letter-spacing: 0.05rem;
 }
 
-/* Contenu des cellules du tableau */
+
 .cellule-tableau-commande,
 .cellule-en-tete-tableau-commande {
     padding: 12px;
@@ -506,7 +545,6 @@
     text-align: center;
 }
 
-/* Lien vers les détails de la commande */
 .lien-details-commande {
     color: #007bff;
     text-decoration: none;
@@ -517,7 +555,7 @@
     text-decoration: underline;
 }
 
-/* Badge indiquant le statut de la commande */
+
 .badge-commande-acceptee {
     background-color: #28a745;
     color: white;
@@ -536,7 +574,7 @@
     font-weight: bold;
 }
 
-/* Bouton pour télécharger le PDF */
+
 .bouton-facture-pdf {
     color: #d9534f;
     text-decoration: none;
@@ -551,19 +589,19 @@
     text-decoration: underline;
 }
 
-/* Texte pour une commande sans facture */
+
 .texte-commande-sans-facture {
     color: #6c757d;
     font-size: 0.9rem;
 }
 
-/* Ligne indiquant aucune commande trouvée */
+
 .ligne-aucune-commande td {
     font-style: italic;
     color: #aaa;
 }
 
-/* Conteneur principal des détails de la commande */
+
 .container-details-commande {
     margin: 0 auto;
     padding: 20px;
@@ -573,7 +611,6 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Titre principal pour les détails de la commande */
 .titre-commande-details {
     font-size: 2rem;
     font-weight: bold;
@@ -581,28 +618,28 @@
     margin-bottom: 1rem;
 }
 
-/* Informations générales de la commande */
+
 .info-commande-details {
     font-size: 1rem;
     color: #555;
     margin-bottom: 1rem;
 }
 
-/* Sous-titres des sections */
+
 .sous-titre-commande-details {
     font-size: 1.5rem;
     color: #444;
     margin: 1.5rem 0 1rem;
 }
 
-/* Tableaux pour les données */
+
 .table-commande-details {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 1.5rem;
 }
 
-/* En-tête des tableaux */
+
 .thead-commande-details {
     background-color: #343a40;
     color: white;
@@ -615,7 +652,7 @@
     text-transform: uppercase;
 }
 
-/* Lignes et cellules des tableaux */
+
 .table-commande-details td,
 .table-commande-details th {
     border: 1px solid #ddd;
@@ -623,18 +660,17 @@
     text-align: left;
 }
 
-/* Lignes alternées */
 .table-commande-details tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Texte pour les cellules vides ou non disponibles */
+
 .cellule-vide {
     color: #999;
     font-style: italic;
 }
 
-/* Lien pour les détails spécifiques */
+
 .lien-commande-details {
     color: #ac1e44;
     text-decoration: none;
@@ -645,14 +681,14 @@
     text-decoration: underline;
 }
 
-/* Ligne sans données */
+
 .ligne-aucune-donnee td {
     text-align: center;
     color: #aaa;
     font-style: italic;
 }
 
-/* Style des sous-sections comme Effectifs et Cadeaux */
+
 .section-sous-details {
     margin-top: 1rem;
     padding: 1rem;
@@ -666,7 +702,7 @@
     font-size: 1.3rem;
 }
 
-/* Bouton ou lien pour des fichiers */
+
 .bouton-lien-details {
     color: #d9534f;
     font-size: 1rem;
@@ -680,7 +716,7 @@
     background-color: #f8d7da;
     border-radius: 4px;
 }
-/* Styles pour le formulaire de création de séjour */
+
 .form-container-sejour-creation {
     max-width: 800px;
     margin: 0 auto;
@@ -747,30 +783,30 @@
 .btn-submit-sejour-create:hover {
     background-color: #910f36;
 }
-/* Conteneur pour l'icône avec cercle */
+
 .tooltip-container {
     position: relative;
     display: inline-block;
     cursor: pointer;
 }
 
-/* Cercle blanc autour de l'icône avec centrage de l'icône */
+
 .tooltip-container i {
     font-size: 18px; 
-    color: #ac1e44; /* Couleur de l'icône */
-    background-color: #fff; /* Fond blanc pour le cercle */
-    border-radius: 50%; /* Forme circulaire */
-    border: solid 2px #ac1e44; /* Bordure colorée pour l'icône */
-    padding: 6px; /* Taille du cercle, ajustez pour augmenter/diminuer */
+    color: #ac1e44;
+    background-color: #fff;
+    border-radius: 50%;
+    border: solid 2px #ac1e44; 
+    padding: 6px;
     margin: 15px;
     display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
-    width: 12px; /* Largeur du cercle, ajustez si nécessaire */
-    height: 12px; /* Hauteur du cercle, ajustez si nécessaire */
+    justify-content: center;
+    align-items: center;
+    width: 12px;
+    height: 12px; 
 }
 
-/* Bulle d'information */
+
 .tooltip-container .tooltip {
     visibility: hidden;
     width: 200px;
@@ -781,18 +817,18 @@
     padding: 10px;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Position au-dessus de l'élément */
+    bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 0.3s;
 }
 
-/* Flèche sous la bulle */
+
 .tooltip-container .tooltip::after {
     content: '';
     position: absolute;
-    top: 100%; /* Pointe de la bulle */
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     border-width: 5px;
@@ -800,13 +836,429 @@
     border-color: #333 transparent transparent transparent;
 }
 
-/* Affichage de la bulle au survol */
+
 .tooltip-container:hover .tooltip {
     visibility: visible;
     opacity: 1;
 }
 
-/* Effet au survol de l'icône */
+
 .informations-supplémentaires:hover {
     color: #910f36; 
 }
+
+.billing-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.billing-form-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+
+.billing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+.billing-form__group {
+    display: flex;
+    flex-direction: column;
+}
+
+.billing-form__label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.billing-form__input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.billing-form__input:focus {
+    outline: none;
+    border-color: #ac1e44;
+    box-shadow: 0 0 4px #ac1e44c7;
+}
+
+
+.billing-form__input--textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+
+.billing-form__error {
+    margin-top: 8px;
+    font-size: 0.875rem;
+    color: #e63946;
+}
+
+
+.billing-form__actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.billing-form__button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.billing-form__button--submit {
+    background-color: #ac1e44;
+    color: #fff;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.billing-form__button--submit:hover {
+    background-color: #910f36;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.container-detailed-sejour {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.header-sejour {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-sejour-details {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group-sejour {
+    margin-bottom: 20px;
+}
+
+.label-sejour {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.select-sejour {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.select-sejour:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.btn-sejour-submit {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #ac1e44;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-sejour-submit:hover {
+    background-color: #910f36;
+}
+
+.container-sejours-en-attente {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+}
+
+.header-sejours-attente {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.message-no-sejours {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+}
+
+.table-sejours-attente {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.thead-sejours-attente {
+    background-color: #f2f2f2;
+}
+
+.th-sejour {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+}
+
+.td-sejour {
+    padding: 12px;
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+    border-bottom: 1px solid #ddd;
+}
+
+.tr-sejour:hover {
+    background-color: #f9f9f9;
+}
+
+.btn-sejour-primary {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #ac1e44;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-sejour-primary:hover {
+    background-color: #910f36;
+}
+
+.container-sejours-validation {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f4f4f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header-sejours-validation {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+}
+
+.message-no-sejours {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+}
+
+.table-sejours-validation {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.thead-sejours-validation {
+    background-color: #f7f7f7;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.th-sejour {
+    padding: 14px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    border-right: 2px solid #e0e0e0;
+}
+
+.td-sejour {
+    padding: 14px;
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+    border-right: 2px solid #e0e0e0;
+}
+
+.tr-sejour:hover {
+    background-color: #fafafa;
+}
+
+.btn-sejour-validate,
+.btn-sejour-reject {
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-sejour-validate {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+.btn-sejour-validate:hover {
+    background-color: #218838;
+}
+
+.btn-sejour-reject {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-sejour-reject:hover {
+    background-color: #c82333;
+}
+/* Styles pour la page des Détails du Séjour */
+.container-sejour-details {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f4f4f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header-sejour-details {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+}
+
+.details-sejour {
+    margin-bottom: 40px;
+}
+
+.details-item-sejour {
+    margin-bottom: 20px;
+}
+
+.label-sejour-details {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #444;
+}
+
+.value-sejour-details {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+.btn-edit-sejour {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ac1e44;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit-sejour:hover {
+    background-color: #910f36;
+}
+.btn-envoi-mail-partenaire {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ac1e44;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-envoi-mail-partenaire:hover {
+    background-color: #910f36;
+}
+

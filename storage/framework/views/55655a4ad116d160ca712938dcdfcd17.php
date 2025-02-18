@@ -1,31 +1,33 @@
+<link rel="stylesheet" href="<?php echo e(asset('css/nous_contacter.css')); ?>">
 <?php $__env->startSection('content'); ?>
+
+<?php if(session('success')): ?>
+        <div class="alert-alert-success">
+            <?php echo e(session('success')); ?>
+
+        </div>
+    <?php endif; ?>
 
         <div class="contact-form-container">
         <h1>Nous Contacter</h1>
-        <form action="#" method="post" class="contact-form">
-            <div class="form-group">
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+        <form action="<?php echo e(route('contact.formulaire')); ?>" method="post" class="contact-form">
+        <?php echo csrf_field(); ?>
+            <label for="nom">Nom :</label>
+            <input type="text" name="nom" id="nom" required>
+            
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email" required>
+            
+            <label for="message">Message :</label>
+            <textarea name="message" id="message" required></textarea>
+            
+            <button type="submit">Envoyer</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required placeholder="Votre email">
-            </div>
-            <div class="form-group">
-                <label for="sujet">Sujet :</label>
-                <select id="sujet" name="sujet">
-                    <option value="question">Question</option>
-                    <option value="demande">Demande</option>
-                    <option value="autre">Autre</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message">Message :</label>
-                <textarea id="message" name="message" required placeholder="Votre message"></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Envoyer</button>
-        </form>
-    </div>
+
+
+            <!-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+            <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
 <?php $__env->stopSection(); ?>
     
 

@@ -4,43 +4,44 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User; // Assurez-vous que votre modèle User est importé
+use App\Models\User;
 use App\Models\CommandeCadeau;
 use App\Models\CommandeEffectif;
+use App\Models\AdresseClient;
+use App\Models\Client;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Mail\SuppressionDonneeMail;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class AccountController extends Controller
 {
     public function show()
     {
-        // Vérifier si l'utilisateur est authentifié
         $user = Auth::user();
         
         if (!$user) {
-            // Si l'utilisateur n'est pas authentifié, rediriger vers la page de connexion
             return redirect()->route('login')->with('error', 'Vous devez être connecté pour accéder à cette page.');
         }
 
-        // Récupérer les commandes cadeaux
         $commandesCadeaux = CommandeCadeau::where('idclient', $user->idclient)->get();
 
-        // Récupérer les commandes effectives
         $commandesEffectifs = CommandeEffectif::where('idclient', $user->idclient)->get();
 
-        // Retourner la vue avec les données
         return view('account.show', compact('user', 'commandesCadeaux', 'commandesEffectifs'));
     }
     
-    // Met à jour les informations de l'utilisateur
     public function update(Request $request)
     {
-        // Validation des données du formulaire
         $validated = $request->validate([
             'nomclient' => 'required|string|max:255',
             'prenomclient' => 'required|string|max:255',
             'mailclient' => 'required|email|max:255',
-            'telclient' => ['required', 'regex:/^0[67]\d{8}$/'], 'unique:client',  // Validation du numéro de téléphone
-            'datenaissance' => 'required|date|before:'.Carbon::now()->subYears(18)->toDateString(), // Validation de l'âge minimum de 18 ans
+            'telclient' => ['required', 'regex:/^0[67]\d{8}$/'], 'unique:client',  
+            'datenaissance' => 'required|date|before:'.Carbon::now()->subYears(18)->toDateString(), 
         ],[
             'nomclient.required' => 'Le champ nom est obligatoire.',
             'prenomclient.required' => 'Le champ prénom est obligatoire.',
@@ -57,10 +58,8 @@ class AccountController extends Controller
             'mot_de_passe_client.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
         ]);
 
-        // Récupère l'utilisateur connecté
         $user = Auth::user();
 
-        // Mise à jour des informations
         $user->update([
             'nomclient' => $request->nomclient,
             'prenomclient' => $request->prenomclient,
@@ -69,7 +68,66 @@ class AccountController extends Controller
             'telclient' => $request->telclient,
         ]);
 
-        // Retour à la page "Mon Compte" avec un message de succès
         return redirect()->route('account.show')->with('success', 'Vos informations ont été mises à jour avec succès.');
     }
+    /*Méthode d'affichage des données personnelles de l'utilisateur*/
+    public function demandeDonneePersonnel($numclient)
+    {
+
+        $client = Client::findOrFail($numclient);
+
+        $adresseclient = DB::select('SELECT * from adresse_client where idclient = '.$numclient)[0];
+
+        try {
+            $referencebancaire = DB::select('Select * from reference_bancaire where idclient = '.$numclient)[0];
+        } catch (\Exception $e) {
+            $referencebancaire = null;
+        }
+
+        $commande = DB::select('select * from commande where idclient = ' .$numclient);
+
+        return view('account.donneepersonnel', compact('client', 'adresseclient', 'referencebancaire', 'commande'));
+    }
+    /*Méthode suppression des données personnelles de l'utilisateur*/
+    public function suppressionDonneePersonnel($numclient){
+
+        $client = client::findOrFail($numclient);
+
+        Mail::to('vinotrip1@gmail.com')->send(new SuppressionDonneeMail($client));
+
+        session()->flash('success', 'Un e-mail a été envoyé à l\'équipe vinotrip pour supprimer vos données.');
+        
+        return redirect()->back();
+    }
+
+   /*Méthode de mise à jour du mot de passe*/
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required'],
+            'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = auth()->user();
+
+    
+        if (!Hash::check($request->current_password, $user->mot_de_passe_client)) {
+            
+            if (md5($request->current_password) !== $user->mot_de_passe_client) {
+                return back()->withErrors(['current_password' => 'Le mot de passe actuel est incorrect.']);
+            }
+
+            
+            $user->mot_de_passe_client = Hash::make($request->current_password);
+            $user->save();
+        }
+
+        
+        $user->mot_de_passe_client = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Votre mot de passe a été mis à jour avec succès.');
+    }
+
+
 }

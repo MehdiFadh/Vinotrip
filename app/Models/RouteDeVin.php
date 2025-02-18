@@ -17,13 +17,17 @@ class RouteDeVin extends Model
     protected $primaryKey = "num_route_de_vins";
     public $timestamps = false;
 
+    protected $fillable = [
+        'nom_route_de_vins', 
+    ];
+
     public function sejours()
     {
         return $this->belongsToMany(
-            Sejour::class,                      // Modèle lié
-            'sejour_route_vin',     // Nom de la table intermédiaire
-            'num_route_de_vins',          // Colonne de clé étrangère dans la table intermédiaire pointant vers ce modèle
-            'refsejour'                         // Colonne de clé étrangère dans la table intermédiaire pointant vers le modèle Sejour
+            Sejour::class,                      
+            'sejour_route_vin',     
+            'num_route_de_vins',         
+            'refsejour'                        
         );
     }
     public function sejourRouteVin()

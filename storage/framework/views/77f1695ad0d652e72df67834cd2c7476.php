@@ -84,7 +84,7 @@
         <?php endif; ?>
     </div>
 
-    <form action="<?php echo e(route('panier.ajouter.cadeau')); ?>" method="POST" id="panier-form">
+    <form action="<?php echo e(route('panier.ajouter.article')); ?>" method="POST" id="panier-form">
         <?php echo csrf_field(); ?>
         <input type="hidden" name="sejour_id" value="<?php echo e($sejour->refsejour); ?>">
         <input type="hidden" name="mode_cadeau" id="mode_cadeau" value="0">
@@ -140,6 +140,9 @@
         </div>
     <?php endif; ?>
 </div>
+<!-- 
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/s223/vinotrip/resources/views/sejour/show.blade.php ENDPATH**/ ?>

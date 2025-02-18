@@ -20,7 +20,7 @@ class Panier extends Model
     ];
 
     protected $casts = [
-        'options' => 'array', // Cast JSON options to PHP array
+        'options' => 'array', 
     ];
 
     public function commande()

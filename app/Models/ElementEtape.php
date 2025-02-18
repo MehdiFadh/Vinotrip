@@ -13,6 +13,10 @@ class ElementEtape extends Model
     protected $primaryKey = "idelement_etape";
     public $timestamps = false;
 
+    protected $fillable = [
+        'nom_element_etape', 
+    ];
+
     public function partenaire()
     {
         return $this->belongsTo(Partenaire::class, 'id_partenaire');

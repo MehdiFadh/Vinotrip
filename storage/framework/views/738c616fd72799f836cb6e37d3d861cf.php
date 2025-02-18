@@ -7,18 +7,18 @@
 
     <div class="etapes-container">
         <div class="hotels-container">
-            <?php if(isset($hebergements) && count($hebergements) > 0): ?>
-                <h3>Hébergements :</h3>
+            <?php if($hotels && $hotels->count() > 0): ?>
+                <h3>Hébergements disponibles :</h3>
                 <ul>
-                    <?php $__currentLoopData = $hebergements; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partenaire): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php if($partenaire->hotel): ?>
-                            <li>
-                                <strong><?php echo e($partenaire->nom_partenaire); ?></strong><br>
-                                <button onclick="location.href='<?php echo e(route('hotel.details', [$partenaire->id_partenaire])); ?>'">
-                                    Voir les détails
-                                </button>
-                            </li>
-                        <?php endif; ?>
+                    <?php $__currentLoopData = $hotels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $hotel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li>
+                            <strong><?php echo e($hotel->nom_partenaire); ?></strong><br>
+                            <img class="img-etape" src="<?php echo e(asset('img/img_partenaire/' . $hotel->img_partenaire)); ?>">
+
+                            <button onclick="location.href='<?php echo e(route('hotel.details', [$hotel->id_partenaire])); ?>'">
+                                Voir les détails
+                            </button>
+                        </li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
             <?php else: ?>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <form id="panier-form" action="<?php echo e(route('panier.ajouter.cadeau')); ?>" method="POST">
+    <form id="panier-form" action="<?php echo e(route('panier.ajouter.article')); ?>" method="POST">
         <?php echo csrf_field(); ?>
         <input type="hidden" name="sejour_id" value="<?php echo e($sejour->refsejour); ?>">
         <input type="hidden" id="mode_cadeau" name="mode_cadeau" value="0">
@@ -128,7 +128,6 @@
             const diner = document.querySelector('input[name="diner"]:checked').value === 'oui' ? prixDiner : 0;
             const activite = document.querySelector('input[name="activite"]:checked').value === 'activite1' ? prixVisite : 0;
            
-
             // Calculer le prix total
             const prixOptions = (dinerGastronomique + diner + activite) * totalPersonnes;
             const prixTotal = (prixSejour * totalPersonnes) + prixOptions;
@@ -137,12 +136,10 @@
             prixTotalElement.textContent = prixTotal.toFixed(2) + ' €';
         }
 
-        // Écouteurs d'événements pour les champs du formulaire
         adultesInput.addEventListener('input', mettreAJourPrixTotal);
         enfantsInput.addEventListener('input', mettreAJourPrixTotal);
         chambresInput.addEventListener('input', mettreAJourPrixTotal);
 
-        // Ajouter des écouteurs pour les options
         dinerGastronomiqueInput.forEach(input => input.addEventListener('change', mettreAJourPrixTotal));
         dinerInput.forEach(input => input.addEventListener('change', mettreAJourPrixTotal));
         activiteInput.forEach(input => input.addEventListener('change', mettreAJourPrixTotal));
@@ -162,6 +159,7 @@
         function activerModeEffectif() {
             document.getElementById('mode_cadeau').value = 0; // Désactiver le mode cadeau
         }
+
         public function ajouterAuPanier(Request $request)
         {
             $adultes = $request->input('adultes');
@@ -174,18 +172,16 @@
             }
 
 
-            if ($totalPersonnes > 8) {
-                return redirect()->back()->with('error', 'Le nombre total de personnes (adultes + enfants) ne peut pas dépasser 8.');
+            if ($totalPersonnes > 10) {
+                return redirect()->back()->with('error', 'Le nombre total de personnes (adultes et enfants) ne peut pas dépasser 10.');
             }
 
             if ($totalPersonnes > $chambres * 2) {
                 return redirect()->back()->with('error', 'Le nombre total de personnes ne peut pas dépasser 2 par chambre.');
-            }
-
-            
+            }    
         }
-
     </script>
+    
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/s223/vinotrip/resources/views/sejour_effectif.blade.php ENDPATH**/ ?>

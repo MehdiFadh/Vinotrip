@@ -4,21 +4,21 @@
 
 <script>
     function normalizeText(text) {
-        // Supprime les accents et met tout en minuscules
+        
         return text
-            .normalize("NFD") // Décompose les caractères accentués en caractères simples + diacritiques
-            .replace(/[\u0300-\u036f]/g, "") // Supprime les diacritiques
-            .toLowerCase(); // Met tout en minuscules
+            .normalize("NFD") 
+            .replace(/[\u0300-\u036f]/g, "") 
+            .toLowerCase(); 
     }
 
     function filterSejours() {
-    var searchQuery = normalizeText(document.getElementById('searchBar').value); // Recherche normalisée
+    var searchQuery = normalizeText(document.getElementById('searchBar').value); 
     var destinationFilter = normalizeText(document.getElementById('destinationSelect').value); // Destination filtrée
     var participantFilter = normalizeText(document.getElementById('participantSelect').value); // Catégorie de participant filtrée
     var categorieFilter = normalizeText(document.getElementById('categorieSejourSelect').value); // Catégorie de séjour filtrée
 
     var sejours = document.querySelectorAll('.sejour-case'); // Toutes les cases de séjour
-    var hasVisibleSejour = false; // Variable pour suivre s'il y a au moins un séjour visible
+    var hasVisibleSejour = false; 
 
     sejours.forEach(function (sejour) {
         // Récupération des champs pour chaque séjour
@@ -30,7 +30,7 @@
         var matchesCategorie = categorieFilter === 'all' || 
             sejour.classList.contains('categorie-' + categorieFilter.replace(/\s+/g, '-'));
 
-        // Recherche approximative (par inclusion et tolérance aux erreurs)
+        // Recherche approximative
         var matchesSearch =
             titreSejour.includes(searchQuery) || 
             destinationSejour.includes(searchQuery) || 
@@ -41,10 +41,10 @@
 
         // Si le séjour correspond, on l'affiche
         if (matchesSearch && matchesDestination && matchesParticipants && matchesCategorie) {
-            sejour.style.display = 'block'; // Afficher le séjour
-            hasVisibleSejour = true; // Au moins un séjour est visible
+            sejour.style.display = 'block'; 
+            hasVisibleSejour = true; 
         } else {
-            sejour.style.display = 'none'; // Masquer le séjour
+            sejour.style.display = 'none'; 
         }
     });
 
@@ -198,16 +198,17 @@
 
     </div>
 
-    
+    <!-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
 
     <script>
-        // Script exécuté au chargement de la page
+       
         document.addEventListener("DOMContentLoaded", function () {
-            // Vérifiez si une destination est pré-sélectionnée
+            
             const destinationSelect = document.getElementById('destinationSelect');
             const selectedValue = destinationSelect.value;
 
-            // Si une destination autre que "all" est sélectionnée, exécuter filterSejours()
+            
             if (selectedValue !== 'all') {
                 filterSejours();
             }

@@ -140,38 +140,7 @@ video {
     font-weight: bold;
 }
 
-footer {
-    display: flex;
-    justify-content: center;
-    background-color: #241c1c;
-    color: #fff;
-    padding: 20px;
-}
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.rubrique-droit {
-    display: flex;
-    align-items: first baseline;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-
-}
-
-.rubrique-droit a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-.rubrique-droit a:hover {
-    color: #f4a261;
-}
 
 .container-destination {
     max-width: 1200px;
@@ -234,4 +203,14 @@ footer {
     border-radius: 5px;
     height: 40px;
     width: 200px;
+}
+
+df-messenger {
+    --df-messenger-button-titlebar-color: #ac1e44; 
+    --df-messenger-button-titlebar-text-color: #FFFFFF;
+    --df-messenger-chat-background-color: #FFF5F5; 
+    --df-messenger-font-color: #000000; 
+    --df-messenger-send-icon-color: #ac1e44; 
+    --df-messenger-bot-message-color: #FFE5E5;
+    --df-messenger-user-message-color: #FFCCCC; 
 }

@@ -14,9 +14,7 @@ class DisponibiliteHotelMail extends Mailable
     use Queueable, SerializesModels;
 
     public $commandeEffectif;
-    /**
-     * Create a new message instance.
-     */
+
     public function __construct()
     {
         //

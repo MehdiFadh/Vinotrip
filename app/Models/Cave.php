@@ -9,10 +9,9 @@ class Cave extends Model
 {
     use HasFactory;
 
-    protected $table = 'cave_a_vin'; // Nom exact de votre table
-    protected $primaryKey = 'id_partenaire'; // Clé primaire
-    public $timestamps = false; // Si pas de colonnes created_at et updated_at
-
+    protected $table = 'cave_a_vin'; 
+    protected $primaryKey = 'id_partenaire'; 
+    public $timestamps = false; 
     protected $fillable = [
         'id_partenaire',
         'code_type_degustation',

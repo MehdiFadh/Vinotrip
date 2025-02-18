@@ -1,6 +1,8 @@
 <?php $__env->startSection('content'); ?>
 
-    <!-- Bandeau de message de succès ou d'erreur -->
+<?php echo Whitecube\LaravelCookieConsent\Facades\Cookies::renderView(); ?>
+
+    
     <?php if(session('success')): ?>
         <div class="alert-paiement-success">
             <?php echo e(session('success')); ?>
@@ -38,8 +40,8 @@
 
     
 
-    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-    <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger>
+    <!-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script> -->
+    <!-- <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
 
 
 <?php $__env->stopSection(); ?>

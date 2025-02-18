@@ -30,12 +30,19 @@ class Sejour extends Model
     {
         return $this->hasMany(Domaine::class);
     }
+    
 
     public function destination_sejour(): hasOne{
         return $this->hasOne(
             Destination::class,                   
             "num_destination_sejour",
             "num_destination_sejour");
+    }
+    public function theme_sejour(): hasOne{
+        return $this->hasOne(
+            ThemeSejour::class,                   
+            "idtheme",
+            "idtheme");
     }
     
     public function categorieParticipants()
@@ -51,10 +58,10 @@ class Sejour extends Model
     public function categorieSejours()
     {
         return $this->belongsToMany(
-            CategorieSejour::class,         // Modèle lié
-            'sejour_categorie_sejour',      // Table intermédiaire
-            'refsejour',                    // Clé étrangère dans la table intermédiaire pointant vers ce modèle
-            'idcategoriesejour'            // Clé étrangère pointant vers le modèle `CategorieSejour`
+            CategorieSejour::class,         
+            'sejour_categorie_sejour',     
+            'refsejour',                    
+            'idcategoriesejour'           
         );
     }
 
@@ -73,7 +80,6 @@ class Sejour extends Model
     {
         return $this->hasMany(Etape::class, 'refsejour', 'refsejour');
     }
-    // Assurez-vous que la relation est bien définie
     public function partenaires()
     {
         return $this->hasMany(Partenaire::class, 'id_partenaire', 'refsejour');

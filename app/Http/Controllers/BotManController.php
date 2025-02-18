@@ -10,7 +10,7 @@ class BotManController extends Controller
     {
         $botman = app('botman');
 
-        $botman->hears('.*problème.*chargement.*|chargement.*page.*', function (BotMan $bot) {
+        /*$botman->hears('.*problème.*chargement.*|chargement.*page.*', function (BotMan $bot) {
             $response = "Je suis désolé d'entendre que vous rencontrez des
             problèmes de chargement de pages. Voici quelques suggestions :
             1. Assurez-vous d'avoir une connexion Internet stable.
@@ -29,14 +29,18 @@ class BotManController extends Controller
             3. Essayez de vider le cache de votre navigateur.";
             $bot->reply($response);
         });
-
+        $botman->hears('.*problème.*', function (BotMan $bot) {
+            $response = "Pouvez-vous m'en dire plus sur le problème que vous rencontrez ?";
+            $bot->reply($response);
+        });
+        
         $botman->hears('bonjour', function(Botman $bot) {
-            $reponse = "Bonjour, comment puis-je vous aider ?";
+            $response = "Bonjour, comment puis-je vous aider ?";
             $bot->reply($response);
             
             
         });
             
-        $botman->listen();
+        $botman->listen();*/
     }
 }

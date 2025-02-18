@@ -1,4 +1,16 @@
 <?php return array (
+  'barryvdh/laravel-dompdf' => 
+  array (
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\DomPDF\\Facade\\Pdf',
+      'Pdf' => 'Barryvdh\\DomPDF\\Facade\\Pdf',
+    ),
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    ),
+  ),
   'botman/botman' => 
   array (
     'aliases' => 
@@ -17,6 +29,17 @@
       0 => 'BotMan\\Drivers\\Web\\Providers\\WebServiceProvider',
     ),
   ),
+  'laravel/pulse' => 
+  array (
+    'aliases' => 
+    array (
+      'Pulse' => 'Laravel\\Pulse\\Facades\\Pulse',
+    ),
+    'providers' => 
+    array (
+      0 => 'Laravel\\Pulse\\PulseServiceProvider',
+    ),
+  ),
   'laravel/sail' => 
   array (
     'providers' => 
@@ -31,11 +54,29 @@
       0 => 'Laravel\\Sanctum\\SanctumServiceProvider',
     ),
   ),
+  'laravel/telescope' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Telescope\\TelescopeServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
     array (
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
+  'livewire/livewire' => 
+  array (
+    'aliases' => 
+    array (
+      'Livewire' => 'Livewire\\Livewire',
+    ),
+    'providers' => 
+    array (
+      0 => 'Livewire\\LivewireServiceProvider',
     ),
   ),
   'nesbot/carbon' => 
@@ -68,6 +109,17 @@
     'aliases' => 
     array (
       'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+  ),
+  'whitecube/laravel-cookie-consent' => 
+  array (
+    'aliases' => 
+    array (
+      'Cookies' => 'Whitecube\\LaravelCookieConsent\\Facades\\Cookies',
+    ),
+    'providers' => 
+    array (
+      0 => 'Whitecube\\LaravelCookieConsent\\ServiceProvider',
     ),
   ),
 );

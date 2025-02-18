@@ -19,12 +19,11 @@ class InscriptionController extends Controller
 
     public function store(Request $request)
     {
-        // Validation des données
         $validatedData = $request->validate([
             'nomclient' => 'required|string|max:255',
             'prenomclient' => 'required|string|max:255',
             'mailclient' => 'required|email|unique:client', 
-            'datenaissance' => 'required|date|before:'.Carbon::now()->subYears(18)->toDateString(), // Validation de l'âge minimum de 18 ans',
+            'datenaissance' => 'required|date|before:'.Carbon::now()->subYears(18)->toDateString(), 
             'telclient' => ['required', 'regex:/^0[123456789]\d{8}$/'], 'unique:client', 
             'mot_de_passe_client' => 'required|confirmed|min:8',
         ], [
@@ -43,26 +42,22 @@ class InscriptionController extends Controller
             'mot_de_passe_client.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
         ]);
 
-        // Génération des codes de vérification
         $emailVerificationCode = rand(100000, 999999);
         $smsVerificationCode = rand(100000, 999999);
 
-        // Stocker les données et codes temporairement dans le cache
         Cache::put("user_registration_{$request->mailclient}", [
             'nomclient' => $request->nomclient,
             'prenomclient' => $request->prenomclient,
             'mailclient' => $request->mailclient,
             'email_code' => $emailVerificationCode,
-            'sms_code' => $smsVerificationCode, // Nouveau code pour SMS
+            'sms_code' => $smsVerificationCode, 
             'datenaissance' => $request->datenaissance,
             'telclient' => $request->telclient,
             'mot_de_passe_client' => $request->mot_de_passe_client,
         ], now()->addMinutes(15));
 
-        // Stocker l'email pour la session
         session(['user_email' => $request->mailclient]);
 
-        // Envoi de l'e-mail avec EmailJS
         $response = Http::post('https://api.emailjs.com/api/v1.0/email/send', [
             'service_id' => env('EMAILJS_SERVICE_ID'), 
             'template_id' => env('EMAILJS_TEMPLATE_ID'), 
@@ -79,7 +74,6 @@ class InscriptionController extends Controller
             return back()->withErrors('Une erreur s\'est produite lors de l\'envoi de l\'email.');
         }
 
-        // Envoi du code de vérification par SMS avec Vonage
         $this->sendSms($request->telclient, $smsVerificationCode);
 
         return redirect()->route('verification.notice');
@@ -87,7 +81,6 @@ class InscriptionController extends Controller
     
     private function sendSms($recipientNumber, $code)
     {
-        // Configuration de Vonage
         $basic  = new \Vonage\Client\Credentials\Basic("7213c435", "GNdApCKvsu67y8op");
         $client = new \Vonage\Client($basic);
     
@@ -98,11 +91,8 @@ class InscriptionController extends Controller
         $message = $response->current();
     
         if ($message->getStatus() == 0) {
-            // Le message a été envoyé avec succès
-            //dd($code);
             return true;
         } else {
-            // Échec de l'envoi du message
             throw new \Exception("L'envoi du SMS a échoué avec le statut : " . $message->getStatus());
         }
     }    

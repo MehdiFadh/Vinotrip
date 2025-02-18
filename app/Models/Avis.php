@@ -33,7 +33,6 @@ class Avis extends Model
 
     public function getDateavisAttribute($value)
     {
-        // Si la date est déjà un objet Carbon, rien n'est fait
         return Carbon::parse($value);
     }
 }

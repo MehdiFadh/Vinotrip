@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/route_de_vins.css') }}">
+<section>
 
     <a href="/route_de_vins">Retour</a>
     <div class="route_de_vins-details">
@@ -31,6 +33,7 @@
                 @foreach($sejour->categorieSejours ?? [] as $categorieSejour)
                     categorie-{{ strtolower(str_replace(' ', '-', $categorieSejour->type_sejour)) }} <!-- Remplace les espaces par des tirets et met tout en minuscules -->
                 @endforeach">
+
                 <img src="{{ asset('img/img_sejour/'.$sejour['url_photo_sejour']) }}" alt="">
                 <h2 class="titreSejour">{{$sejour['titresejour']}}</h2>
                 <ul class="descriptionSejour">
@@ -49,15 +52,16 @@
                         @endforeach
                     </li>
                     <li class="prix-sejour">À partir de {{$sejour['prix_sejour']}} €</li>
-                    <li class="sejour-item">
-                        <div class="sejour-info">
-                            <h2>{{ $sejour->nom }}</h2>
-                            <p>{{ $sejour->nombre_jours }} jour{{ $sejour->nombre_jours > 1 ? 's' : '' }}</p>
+                    <div class="container mt-5">
+                        <div class="tooltip-container">
+                            <i class="informations-supplémentaires">ℹ</i>
+                            <div class="tooltip">
+                                Le prix varie selon le nombre de personnes pour le séjour
+                            </div>
                         </div>
-                    </li>
+                    </div>
                     <li class="avis-sejour">                    
                         @if($sejour['moyenne_avis'] == 0)                                
-
                         <p>Il n'y a pas encore d'avis.</p>
                         @else
                             <div class="etoiles">
@@ -74,8 +78,27 @@
                                 @endfor
                             </div>
                             
-                            <p>Moyenne des avis : {{ $moyenne_avis }} / 5</p>
+                            <p>Moyenne des avis : {{ $moyenne_avis }} / 5
+                            <button class="lien-avis" 
+                                    onclick="location.href='{{ route('sejour.showByRefSejour', ['refsejour' => $sejour->refsejour]) }}#avis-container'">
+                                Lire les avis
+                            </button>
+                            </p>
                         @endif
+                    </li>
+                    <li class="nombre-etapes">
+                        {{-- Afficher le nombre de jours avec gestion du pluriel --}}
+                        {{ $sejour->etapes_count }} 
+                        <strong>jour{{ $sejour->etapes_count > 1 ? 's' : '' }}</strong>
+                        
+                        {{-- Calculer le nombre de nuits --}}
+                        @php
+                            $nbnuits = max(0, $sejour->etapes_count - 1);
+                        @endphp
+
+                        {{-- Afficher le nombre de nuits avec gestion du pluriel --}}
+                        | {{ $nbnuits }} 
+                        <strong>nuit{{ $nbnuits > 1 ? 's' : '' }}</strong>
                     </li>
                 </ul>
                 <button class="buttonDecouvrirSejour" 
@@ -86,4 +109,6 @@
             @endforeach
         </ul>
     </div>
+</section>
+
 @endsection

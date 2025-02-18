@@ -9,18 +9,18 @@
 
     <div class="etapes-container">
         <div class="hotels-container">
-            @if(isset($hebergements) && count($hebergements) > 0)
-                <h3>Hébergements :</h3>
+            @if($hotels && $hotels->count() > 0)
+                <h3>Hébergements disponibles :</h3>
                 <ul>
-                    @foreach($hebergements as $partenaire)
-                        @if($partenaire->hotel)
-                            <li>
-                                <strong>{{ $partenaire->nom_partenaire }}</strong><br>
-                                <button onclick="location.href='{{ route('hotel.details', [$partenaire->id_partenaire]) }}'">
-                                    Voir les détails
-                                </button>
-                            </li>
-                        @endif
+                    @foreach($hotels as $hotel)
+                        <li>
+                            <strong>{{ $hotel->nom_partenaire }}</strong><br>
+                            <img class="img-etape" src="{{ asset('img/img_partenaire/' . $hotel->img_partenaire) }}">
+
+                            <button onclick="location.href='{{ route('hotel.details', [$hotel->id_partenaire]) }}'">
+                                Voir les détails
+                            </button>
+                        </li>
                     @endforeach
                 </ul>
             @else
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <form id="panier-form" action="{{ route('panier.ajouter.cadeau') }}" method="POST">
+    <form id="panier-form" action="{{ route('panier.ajouter.article') }}" method="POST">
         @csrf
         <input type="hidden" name="sejour_id" value="{{ $sejour->refsejour }}">
         <input type="hidden" id="mode_cadeau" name="mode_cadeau" value="0">
@@ -130,7 +130,6 @@
             const diner = document.querySelector('input[name="diner"]:checked').value === 'oui' ? prixDiner : 0;
             const activite = document.querySelector('input[name="activite"]:checked').value === 'activite1' ? prixVisite : 0;
            
-
             // Calculer le prix total
             const prixOptions = (dinerGastronomique + diner + activite) * totalPersonnes;
             const prixTotal = (prixSejour * totalPersonnes) + prixOptions;
@@ -139,12 +138,10 @@
             prixTotalElement.textContent = prixTotal.toFixed(2) + ' €';
         }
 
-        // Écouteurs d'événements pour les champs du formulaire
         adultesInput.addEventListener('input', mettreAJourPrixTotal);
         enfantsInput.addEventListener('input', mettreAJourPrixTotal);
         chambresInput.addEventListener('input', mettreAJourPrixTotal);
 
-        // Ajouter des écouteurs pour les options
         dinerGastronomiqueInput.forEach(input => input.addEventListener('change', mettreAJourPrixTotal));
         dinerInput.forEach(input => input.addEventListener('change', mettreAJourPrixTotal));
         activiteInput.forEach(input => input.addEventListener('change', mettreAJourPrixTotal));
@@ -164,6 +161,7 @@
         function activerModeEffectif() {
             document.getElementById('mode_cadeau').value = 0; // Désactiver le mode cadeau
         }
+
         public function ajouterAuPanier(Request $request)
         {
             $adultes = $request->input('adultes');
@@ -176,16 +174,14 @@
             }
 
 
-            if ($totalPersonnes > 8) {
-                return redirect()->back()->with('error', 'Le nombre total de personnes (adultes + enfants) ne peut pas dépasser 8.');
+            if ($totalPersonnes > 10) {
+                return redirect()->back()->with('error', 'Le nombre total de personnes (adultes et enfants) ne peut pas dépasser 10.');
             }
 
             if ($totalPersonnes > $chambres * 2) {
                 return redirect()->back()->with('error', 'Le nombre total de personnes ne peut pas dépasser 2 par chambre.');
-            }
-
-            
+            }    
         }
-
     </script>
+    
 @endsection

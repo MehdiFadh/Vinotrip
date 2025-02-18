@@ -50,6 +50,9 @@ unset($__errorArgs, $__bag); ?>
         <p>Pas encore inscrit ? <a href="<?php echo e(route('inscription.index')); ?>">Créez un compte.</a></p>
     </div>
 </div>
+
+<!-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/s223/vinotrip/resources/views/auth/login.blade.php ENDPATH**/ ?>

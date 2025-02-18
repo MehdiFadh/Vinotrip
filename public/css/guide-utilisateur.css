@@ -1,0 +1,19 @@
+section{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    font-size: larger;
+}
+.step{
+    margin-bottom: 20vh;
+    text-align: center;
+
+}
+.step img{
+    max-width: 45vw;
+    border: solid 1px rgb(174, 32, 70);
+    text-align: center;
+
+}
+h3{
+    text-align: center;
+}

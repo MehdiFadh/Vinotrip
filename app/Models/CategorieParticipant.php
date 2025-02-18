@@ -13,13 +13,17 @@ class CategorieParticipant extends Model
     protected $primaryKey = "idcategorie_participant";
     public $timestamps = false;
 
+    protected $fillable = [
+        'type_participant', 
+    ];
+
     public function sejours()
     {
         return $this->belongsToMany(
-            Sejour::class,                      // Modèle lié
-            'sejour_categorie_participant',     // Nom de la table intermédiaire
-            'idcategorie_participant',          // Colonne de clé étrangère dans la table intermédiaire pointant vers ce modèle
-            'refsejour'                         // Colonne de clé étrangère dans la table intermédiaire pointant vers le modèle Sejour
+            Sejour::class,                      
+            'sejour_categorie_participant',     
+            'idcategorie_participant',          
+            'refsejour'                        
         );
     }
 }

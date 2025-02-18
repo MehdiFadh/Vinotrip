@@ -3,45 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sejour;
 use App\Models\Commande;
 use App\Models\CommandeSejour;
 use App\Models\AdresseClient; 
 use App\Models\Hotel;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class CommandeController extends Controller
 {
-    // Liste toutes les commandes (index par défaut)
     public function index()
     {
         return view('commandes', [
             'commandes' => Commande::all()
         ]);
     }
-
-    // Historique des commandes
+    /*Méthode d'affichage de l'historique des commandes de l'utilisateur*/
     public function historique()
     {
-        // Identifiant du client connecté
         $idclient = auth()->user()->idclient;
     
-        // Récupérer les commandes avec leur facture
         $commandes = DB::table('commande')
             ->leftJoin('facture', 'commande.numcommande', '=', 'facture.numcommande')
             ->where('commande.idclient', $idclient)
             ->orderBy('commande.numcommande', 'desc') 
             ->select(
-                'commande.*', // Toutes les colonnes de commande
-                'facture.montant_total', // Colonne montant_total de la facture
-                'facture.description_facture as facture_pdf', // Fichier PDF (colonne chemin ou description)
-                'facture.date_facturation' // Date de la facture, si besoin
-            )
+                'commande.*', 
+                'facture.montant_total', 
+                'facture.description_facture', 
+                'facture.date_facturation', 
+                'facture.num_facture') 
             ->get();
     
-        // Retourner la vue avec les commandes récupérées
         return view('commandes.historique', compact('commandes'));
     }
-
+    /*Afichage du détail de la commande*/
     public function details($numcommande)
     {
         $commande = DB::table('commande')
@@ -52,7 +49,6 @@ class CommandeController extends Controller
             return redirect()->route('commandes.historique')->with('error', 'Commande introuvable.');
         }
 
-        // Récupérer les détails des effectifs
         $effectifs = DB::table('commande_effectif')
             ->join('commande', 'commande_effectif.numcommande', '=', 'commande.numcommande')
             ->join('commande_sejour', 'commande.numcommande', '=', 'commande_sejour.numcommande')
@@ -61,7 +57,6 @@ class CommandeController extends Controller
             ->select('sejour.titresejour as nom', 'commande_sejour.nbr_adulte as nb_adultes','commande_sejour.nbr_chambre as chambres','commande_effectif.date_debut_sejour as date')
             ->get();
 
-        // Récupérer les détails des cadeaux
         $cadeaux = DB::table('commande_cadeau')
             ->join('commande', 'commande_cadeau.numcommande', '=', 'commande.numcommande')
             ->join('commande_sejour', 'commande.numcommande', '=', 'commande_sejour.numcommande')
@@ -70,7 +65,6 @@ class CommandeController extends Controller
             ->select('sejour.titresejour as nom', 'commande_sejour.nbr_adulte as nb_adultes','commande_sejour.nbr_chambre as chambres')
             ->get();
 
-        // Récupérer le montant total de la facture
         $facture = DB::table('facture')
             ->where('numcommande', $numcommande)
             ->select('montant_total')
@@ -86,7 +80,7 @@ class CommandeController extends Controller
 
         return view('commandes.choisir-adresse', compact('adresses'));
     }
-
+    /*Enregistrement de l'adresse*/
     public function enregistrerAdresse(Request $request)
     {
         $request->validate([
@@ -98,7 +92,7 @@ class CommandeController extends Controller
         ]);
     
         $adresse = new AdresseClient([
-            'idclient' => auth()->user()->idclient, // Récupérer l'idClient de l'utilisateur connecté
+            'idclient' => auth()->user()->idclient, 
             'nom_adresse_client' => $request->input('nom_adresse_client'),
             'rue_client' => $request->input('ligne1'),
             'code_postal_client' => $request->input('code_postal'),
@@ -106,11 +100,32 @@ class CommandeController extends Controller
             'pays_client' => $request->input('pays'),
         ]);
     
-        // Sauvegarder l'adresse
         $adresse->save();
     
         return redirect()->route('commande.adresse')->with('success', 'Nouvelle adresse ajoutée avec succès.');
     }
+    /*Affichage de la facture */
+    public function showFacture($numcommande)
+    {
+        $commande = DB::table('commande')
+            ->leftJoin('facture', 'commande.numcommande', '=', 'facture.numcommande')
+            ->leftJoin('commande_sejour', 'commande.numcommande', '=', 'commande_sejour.numcommande')
+            ->leftJoin('sejour', 'commande_sejour.refsejour', '=', 'sejour.refsejour') 
+            ->where('commande.numcommande', $numcommande)
+            ->select(
+                'commande.*', 
+                'facture.montant_total', 
+                'facture.date_facturation', 
+                'facture.num_facture',
+                'sejour.titresejour'  
+            )
+            ->first();
     
-
+        if (!$commande) {
+            return redirect()->route('commandes.historique')->with('error', 'Commande introuvable.');
+        }
+    
+        return view('facture', compact('commande'));
+    }
+    
 }

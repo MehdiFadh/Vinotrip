@@ -58,6 +58,50 @@
             </div>
 
             <button type="submit" class="btn-account">Sauvegarder les modifications</button>
+            <!-- Section pour demander une réinitialisation de mot de passe -->
+    
+        </form>
+    </div>
+
+    <div class="reset-password-section mt-4">
+        <h3>Changer le mot de passe</h3>
+        <form action="{{ route('account.password.update') }}" method="POST">
+            @csrf
+            @method('PUT') <!-- Utiliser PUT pour une mise à jour -->
+
+            <div class="form-group-account">
+                <label for="current_password">Mot de passe actuel</label>
+                <input type="password" id="current_password" name="current_password" class="form-control" required>
+                @error('current_password')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group-account">
+                <label for="new_password">Nouveau mot de passe</label>
+                <input type="password" id="new_password" name="new_password" class="form-control" required>
+                @error('new_password')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group-account">
+                <label for="new_password_confirmation">Confirmer le nouveau mot de passe</label>
+                <input type="password" id="new_password_confirmation" name="new_password_confirmation" class="form-control" required>
+                @error('new_password_confirmation')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <button type="submit" class="btn-account">Mettre à jour le mot de passe</button>
+        </form>
+    </div>
+
+
+    <div class="">
+        <form action="{{ route('account.donneepersonnel', $user->idclient) }}" method="GET">
+            @csrf
+            <button type="submit" class="btn-account">Quels sont mes informations personnelles stockées ?</button>
         </form>
     </div>
 

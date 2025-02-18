@@ -9,9 +9,9 @@ class Hotel extends Model
 {
     use HasFactory;
 
-    protected $table = 'hotel'; // Nom de la table
+    protected $table = 'hotel';
 
-    public $timestamps = false; // Pas de colonnes created_at ou updated_at
+    public $timestamps = false; 
 
     protected $fillable = [
         'id_partenaire',
@@ -19,7 +19,6 @@ class Hotel extends Model
         'nb_chambres',
     ];
 
-    // Relation avec le modèle Partenaire
     public function partenaire()
     {
         return $this->belongsTo(Partenaire::class, 'id_partenaire');

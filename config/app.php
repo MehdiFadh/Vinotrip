@@ -15,7 +15,13 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-
+    'providers' => ServiceProvider::defaultProviders()->merge([
+    // ...
+    App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
+    // IMPORTANT: add the following line AFTER "App\Providers\RouteServiceProvider::class,"
+    App\Providers\CookiesServiceProvider::class,
+    ])->toArray(),
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
@@ -42,7 +48,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', true),
+    'debug' => (bool) env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -168,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -183,6 +191,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
 
 ];
+

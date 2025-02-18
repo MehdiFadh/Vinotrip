@@ -37,4 +37,7 @@
         <p>Pas encore inscrit ? <a href="{{ route('inscription.index') }}">Créez un compte.</a></p>
     </div>
 </div>
+
+<!-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
 @endsection

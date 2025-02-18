@@ -2,7 +2,7 @@
 .sejour-container-sejour ul{
     list-style: none;
 }
-/* En-tête */
+
 h1 {
     text-align: center;
     margin-top: 30px;
@@ -23,7 +23,7 @@ h1 {
     font-size: 18px;
 }
 
-/* Liste principale */
+
 .sejour-liste-sejour {
     list-style-type: none;
     padding: 0;
@@ -38,7 +38,7 @@ h1 {
     cursor: pointer;
 }
 
-/* Chaque séjour */
+
 .sejour-case {
     background-color: #F0EEEC;
     margin: 15px 0;
@@ -61,7 +61,7 @@ h1 {
     }
 }
 
-/* Détails de chaque séjour */
+
 .descriptionSejour {
     margin-top: 10px;
     color: black;
@@ -73,7 +73,7 @@ h1 {
     margin: 0;
     margin-bottom: 10px;
 }
-/* Conteneur de la barre de recherche */
+
 .search-bar-container {
     display: flex;
     justify-content: center; 
@@ -83,40 +83,40 @@ h1 {
 }
 
 
-/* Style de la barre de recherche */
+
 #searchBar {
-    padding: 8px 12px; /* Padding pour rendre le champ plus large */
+    padding: 8px 12px; 
     font-size: 14px;
-    width: 300px; /* Définir une largeur pour l'input */
-    border: 1px solid #ccc; /* Bordure légère */
-    border-radius: 4px; /* Coins arrondis */
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     margin-top: 2px;
     height: 30px;
 }
 
-/* Style du bouton de recherche */
+
 #searchButton {
-    padding: 8px 15px; /* Padding pour rendre le bouton plus grand */
-    font-size: 14px; /* Taille du texte du bouton */
-    background-color: #ac1e44; /* Couleur de fond du bouton */
-    color: white; /* Texte en blanc */
-    border: none; /* Enlève la bordure par défaut */
-    cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
-    transition: background-color 0.3s ease; /* Effet de transition pour un changement de couleur */
-    margin-left: 10px; /* Espacement entre la barre et le bouton */
+    padding: 8px 15px;
+    font-size: 14px;
+    background-color: #ac1e44;
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
 }
 
-/* Style du bouton au survol */
+
 #searchButton:hover {
-    background-color: #ac1e44c7; /* Couleur de fond lorsque le bouton est survolé */
+    background-color: #ac1e44c7; 
 }
 
-/* Style du bouton lorsque l'on clique */
+
 #searchButton:active {
-    background-color: #ac1e4496; /* Couleur de fond lorsque le bouton est cliqué */
+    background-color: #ac1e4496; 
 }
 
-/* Partie des filtres */
+
 .filters-container-sejour {
     display: flex;
     justify-content: center; 
@@ -127,7 +127,7 @@ h1 {
 }
 
 
-/* Style pour la bordure et l'espacement */
+
 .sejour-container-sejour {
     max-width: 1000px;
     margin: 0 auto;
@@ -140,23 +140,23 @@ h1 {
 
 .sejour-liste-sejour {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colonnes de largeur égale */
-    gap: 20px; /* Espacement entre les éléments */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
 .sejour-case {
-    background-color: #f4f4f4; /* Fond léger pour les cases */
+    background-color: #f4f4f4;
     padding: 10px;
-    border-radius: 8px; /* Coins arrondis */
+    border-radius: 8px;
     text-align: center;
 }
 
 .sejour-case img {
-    max-width: 100%; /* Assurez-vous que l'image occupe toute la largeur disponible */
-    border-radius: 8px; /* Coins arrondis pour les images */
+    max-width: 100%;
+    border-radius: 8px;
 }
 
 .sejour-case h2 {
@@ -218,11 +218,11 @@ h1 {
 }
 
 .star.empty {
-    color: #ccc; /* Couleur des étoiles vides */
+    color: #ccc;
 }
 
 .star.filled {
-    color: gold; /* Couleur des étoiles pleines */
+    color: gold;
 }
 
 

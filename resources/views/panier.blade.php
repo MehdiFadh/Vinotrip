@@ -28,7 +28,7 @@
         @auth
         <a href="{{route('commandes.historique')}}">Voir l'historique des commandes</a>
         @endauth
-
+       
 
         @if (!empty($panier) && count($panier) > 0 )
             <div class="panier-item">
@@ -39,59 +39,84 @@
                 </form>
             </div>
             @foreach ($panier as $item)
-                <div class="panier-item">
-                    <!-- Image -->
-                    <img src="{{ asset('img/img_sejour/' . $item['url_photo_sejour']) }}" 
-                         alt="{{ $item['titresejour'] }}" 
-                         class="panier-item-image">
-
-                    <!-- Détails du séjour -->
-                    <div class="panier-item-details">
-                        <h3>{{ $item['titresejour'] }}</h3>
-                        <p>Prix par adulte : {{ $item['prix_sejour'] }} €</p>
-                        <p>Prix par enfant : {{ $item['prix_sejour'] }} €</p>
-                        <p>Adultes : {{ $item['adultes'] }}</p>
-                        <p>Enfants : {{ $item['enfants'] }}</p>
-                        <p>Chambres : {{ $item['chambres'] }}</p>
-                        <p class="panier-item-price">
-                            <strong>Prix total pour ce séjour : {{ $item['prix_total']}} €</strong>
-                        </p>
-                    </div>
-
-                    <!-- Formulaires -->
-                    <div>
-                        <!-- Formulaire Modification -->
-                        <form action="{{ route('panier.modifier') }}" method="POST" class="panier-form">
-                            @csrf
-                            <input type="hidden" name="sejour_id" value="{{ $item['sejour_id'] }}">
-                            <label for="adultes">Adultes :</label>
-                            <input type="number" name="adultes" value="{{ $item['adultes'] }}" min="0" class="panier-form-input">
-
-                            <label for="enfants">Enfants :</label>
-                            <input type="number" name="enfants" value="{{ $item['enfants'] }}" min="0" class="panier-form-input">
-
-                            <label for="chambres">Chambres :</label>
-                            <input type="number" name="chambres" value="{{ $item['chambres'] }}" min="0" class="panier-form-input">
-                            
-                            @if (isset($item['mode_cadeau']) && !$item['mode_cadeau']) <!-- Si ce n'est pas un cadeau -->
-                                <label for="date_sejour_{{ $item['sejour_id'] }}">Début du séjour :</label>
-                                <input type="date" 
-                                    id="date_sejour_{{ $item['sejour_id'] }}" 
-                                    name="date_sejour" 
-                                    value="{{ $item['date_sejour'] ?? date('Y-m-d') }}"
-                                    class="panier-form-input">
+                @if (isset($item['type']) && $item['type'] === 'cheque_cadeau')
+                    <!-- Affichage du chèque cadeau -->
+                    <div class="panier-item">
+                        <div class="panier-item-details">
+                            <h3>Chèque Cadeau</h3>
+                            <p><strong>Montant :</strong> {{ $item['montant'] }} €</p>
+                            <p><strong>Format :</strong> {{ $item['format'] }}</p>
+                            @if (!empty($item['offert_par']))
+                                <p><strong>Offert par :</strong> {{ $item['offert_par'] }}</p>
                             @endif
-                            <button type="submit" class="btn-edit">Modifier</button>
-                        </form>
+                            @if (!empty($item['message']))
+                                <p><strong>Message :</strong> {{ $item['message'] }}</p>
+                            @endif
+                        </div>
 
                         <!-- Formulaire Suppression -->
                         <form action="{{ route('panier.supprimer') }}" method="POST" class="panier-form">
                             @csrf
-                            <input type="hidden" name="sejour_id" value="{{ $item['sejour_id'] }}">
+                            <input type="hidden" name="sejour_id" value="{{ $loop->index }}">
                             <button type="submit" class="btn-suppr">Supprimer</button>
                         </form>
                     </div>
-                </div>
+                @else
+                    <!-- Affichage du séjour -->
+                    <div class="panier-item">
+                        <!-- Image -->
+                        <img src="{{ asset('img/img_sejour/' . $item['url_photo_sejour']) }}" 
+                             alt="{{ $item['titresejour'] }}" 
+                             class="panier-item-image">
+
+                        <!-- Détails du séjour -->
+                        <div class="panier-item-details">
+                            <h3>{{ $item['titresejour'] }}</h3>
+                            <p>Prix par adulte : {{ $item['prix_sejour'] }} €</p>
+                            <p>Prix par enfant : {{ $item['prix_sejour'] }} €</p>
+                            <p>Adultes : {{ $item['adultes'] }}</p>
+                            <p>Enfants : {{ $item['enfants'] }}</p>
+                            <p>Chambres : {{ $item['chambres'] }}</p>
+                            <p class="panier-item-price">
+                                <strong>Prix total pour ce séjour : {{ $item['prix_total']}} €</strong>
+                            </p>
+                        </div>
+
+                        <!-- Formulaires -->
+                        <div>
+                            <!-- Formulaire Modification -->
+                            <form action="{{ route('panier.modifier') }}" method="POST" class="panier-form">
+                                @csrf
+                                <input type="hidden" name="sejour_id" value="{{ $item['sejour_id'] }}">
+                                <label for="adultes">Adultes :</label>
+                                <input type="number" name="adultes" value="{{ $item['adultes'] }}" min="0" class="panier-form-input">
+
+                                <label for="enfants">Enfants :</label>
+                                <input type="number" name="enfants" value="{{ $item['enfants'] }}" min="0" class="panier-form-input">
+
+                                <label for="chambres">Chambres :</label>
+                                <input type="number" name="chambres" value="{{ $item['chambres'] }}" min="0" class="panier-form-input">
+                                
+                                @if (isset($item['mode_cadeau']) && !$item['mode_cadeau']) <!-- Si ce n'est pas un cadeau -->
+                                    <label for="date_sejour_{{ $item['sejour_id'] }}">Début du séjour :</label>
+                                    <input type="date" 
+                                        id="date_sejour_{{ $item['sejour_id'] }}" 
+                                        name="date_sejour" 
+                                        value="{{ $item['date_sejour'] ?? date('Y-m-d') }}"
+                                        class="panier-form-input">
+                                @endif
+                                <button type="submit" class="btn-edit">Modifier</button>
+                            </form>
+
+                            <!-- Formulaire Suppression -->
+                            <form action="{{ route('panier.supprimer') }}" method="POST" class="panier-form">
+                                @csrf
+                                <input type="hidden" name="sejour_id" value="{{ $item['sejour_id'] }}">
+                                <button type="submit" class="btn-suppr">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
             @endforeach
 
             <!-- Formulaire Code Réduction -->
@@ -144,6 +169,8 @@
             <p class="panier-empty-message">Votre panier est vide.</p>
         @endif
     </div>
+
+
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         const messageTextarea = document.querySelector('#message_commande');

@@ -37,7 +37,6 @@ class AnonymizeClients extends Command
                 'datenaissance' => null,
                 'telclient' => null,
                 'mot_de_passe_client' => null,
-                'role' => 'anonyme',
             ]);
 
             $this->info("Client {$client->idclient} anonymisé.");

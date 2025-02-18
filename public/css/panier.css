@@ -1,4 +1,4 @@
-/* Conteneur principal du panier */
+
 .panier-container {
     display: flex;
     flex-direction: column;
@@ -7,11 +7,11 @@
     max-width: 800px;
 }
 
-/* Chaque item dans le panier */
+
 .panier-item {
     display: flex;
-    align-items: center; /* Centre verticalement */
-    gap: 20px; /* Espacement entre l'image et les détails */
+    align-items: center;
+    gap: 20px; 
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -19,31 +19,31 @@
     background-color: #fff;
 }
 
-/* Image de l'article */
+
 .panier-item-image {
     width: 250px;
     height: auto;
     border-radius: 8px;
-    object-fit: cover; /* Maintient les proportions de l'image */
+    object-fit: cover; 
 }
 
-/* Détails de l'article */
+
 .panier-item-details {
-    flex: 1; /* Prend l'espace disponible */
+    flex: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centre verticalement */
+    justify-content: center;
     gap: 10px;
 }
 
-/* Prix total par article */
+
 .panier-item-price {
     font-weight: bold;
     color: #ac1e44;
     margin-top: 10px;
 }
 
-/* Formulaire pour modifier le panier */
+
 .panier-form {
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
     width: 100px;
 }
 
-/* Boutons généraux */
+
 .btn-edit,
 .btn-suppr {
     padding: 10px 15px;
@@ -88,28 +88,28 @@
 }
 
 .btn-suppr {
-    background-color: #ac1e44; /* Rouge */
+    background-color: #ac1e44; 
 }
 
 .btn-suppr:hover {
     background-color: #910f36;
 }
 
-/* Centrage des boutons d'action */
+
 .panier-actions-container {
     display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    gap: 15px; /* Espacement entre les boutons */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     margin-top: 20px;
 }
 
-/* Boutons principaux (connexion/paiement) */
+
 .btn-main {
     padding: 12px 20px;
     font-size: 1em;
     color: #fff;
-    background-color: #ac1e44; /* Couleur principale */
+    background-color: #ac1e44;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -120,7 +120,7 @@
     background-color: #910f36;
 }
 
-/* Titre principal */
+
 .panier-title {
     text-align: center;
     margin: 20px auto;
@@ -128,7 +128,7 @@
     color: #333;
 }
 
-/* Message quand le panier est vide */
+
 .panier-empty-message {
     text-align: center;
     font-size: 1.2em;
@@ -136,7 +136,7 @@
     margin-top: 40px;
 }
 
-/* Alignement des actions globales */
+
 .panier-actions {
     display: flex;
     justify-content: center;

@@ -14,6 +14,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ConditionsVenteController;
 use App\Http\Controllers\CategorieParticipantController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\Client;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\CaveController;
 use App\Http\Controllers\InscriptionController;
@@ -26,6 +27,10 @@ use App\Models\Sejour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BotManController;
+use App\Http\Controllers\SalesReportController;
+use Illuminate\Support\Facades\Password;
+
+use App\Http\Controllers\SmsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +42,21 @@ use App\Http\Controllers\BotManController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::put('/account/password/update', [AccountController::class, 'updatePassword'])->name('account.password.update');
+
+Route::get('/cheque-cadeau', function () {return view('cheque-cadeau');})->name('cheque-cadeau');
+Route::get('/guide-utilisateur', function () {return view('guide-utilisateur');})->name('guide-utilisateur');
+
+Route::post('/panier/ajouter-cheque-cadeau', [PanierController::class, 'ajouterChequeCadeau'])->name('panier.ajouterChequeCadeau');
+
+
+//Rapport
+Route::get('/admin/rapport-ventes', [SalesReportController::class, 'index'])->name('rapport.ventes');
+Route::get('/rapport-sejours', [SalesReportController::class, 'sejourDetails'])->name('rapport.sejours');
+Route::get('/rapport/vignobles', [SalesReportController::class, 'rapportVentesVignobles'])->name('rapport.vignobles');
+Route::get('/rapport/zone-geographique', [SalesReportController::class, 'rapportVentesZoneGeographique'])->name('rapport.zone.geographique');
+
 
 // Déconnexion
 Route::post('/logout', function () {Auth::logout();return redirect('/');})->name('logout');
@@ -76,8 +96,7 @@ Route::get('/cave/{id_partenaire}', [CaveController::class, 'show'])->name('cave
 
 Route::get('/panier', [PanierController::class, 'afficher'])->name('panier.afficher');
 
-Route::post('/panier/ajouterSejourEffectif', [PanierController::class, 'ajouterSejourEffectif'])->name('panier.ajouterSejourEffectif');
-Route::post('/panier/ajouter-cadeau', [PanierController::class, 'ajouterCadeau'])->name('panier.ajouter.cadeau');
+Route::post('/panier/ajout-article', [PanierController::class, 'ajouterArticle'])->name('panier.ajouter.article');
 Route::post('/panier/modifier', [PanierController::class, 'modifier'])->name('panier.modifier');
 Route::post('/panier/supprimer', [PanierController::class, 'supprimer'])->name('panier.supprimer');
 Route::post('/panier/ajouter-message-commande', [PanierController::class, 'ajouterMessageCommande'])->name('panier.ajouterMessageCommande');
@@ -133,17 +152,33 @@ Route::post('/nouveau', [SejourController::class, 'store'])->name('sejours.store
 Route::get('/admin/sejours/validation', [SejourController::class, 'showSejoursEnAttente'])->name('sejours.validation');
 Route::patch('/sejours/{refsejour}/valider', [SejourController::class, 'validerSejour'])->name('sejours.valider');
 Route::patch('/sejours/{refsejour}/refuser', [SejourController::class, 'refuserSejour'])->name('sejours.refuser');
-
+Route::get('/commandes/envoyer-mail-tous-partenaires', [SejourController::class, 'envoyerMailTousPartenaires'])->name('sejours.envoyerMailTousPartenaires');
 
 // Routes pour validation ou refus des séjours
 Route::patch('/sejours/{sejour}/valider', [SejourController::class, 'valider'])->name('sejours.valider');
 Route::patch('/sejours/{sejour}/refuser', [SejourController::class, 'refuser'])->name('sejours.refuser');
 
+Route::get('/admin/sejours-en-attente', [SejourController::class, 'showSejoursEnAttente2'])->name('sejours.en_attente2');
+
+Route::get('/admin/sejours/{refsejour}/details-complets', [SejourController::class, 'editCompleteDetails'])->name('sejours.details.complete.edit');
+Route::get('/admin/sejours/{refsejour}/details', [SejourController::class, 'CompleteDetails'])->name('sejours.details.complete');
+Route::post('/admin/sejours/{refsejour}/details-complets', [SejourController::class, 'updateCompleteDetails'])->name('sejours.details.complete.update');
 
 
 Route::get('/ventes/commandes', [VenteController::class, 'listeCommandes'])->name('ventes.commandes');
 Route::post('/ventes/envoyer-email', [VenteController::class, 'envoyerEmail'])->name('ventes.envoyerEmail');
 
-
-
+Route::get('/facture/{numcommande}', [CommandeController::class, 'showFacture'])->name('facture');
 Route::match(['get', 'post'], '/botman', 'App\Http\Controllers\BotManController@handle');
+
+Route::get('/compte/donne-personnel/{numclient}', [AccountController::class, 'demandeDonneePersonnel'])->name('account.donneepersonnel');
+
+Route::get('/compte/donne-personnel/suppression/{numclient}', [AccountController::class, 'suppressionDonneePersonnel'])->name('account.suppressionDonneePersonnel');
+
+Route::post('/contact/formulaire', [ContactController::class, 'formulaire'])->name('contact.formulaire');
+
+
+
+Route::get('/send-sms-test', [SmsController::class, 'sendSmsTest']);
+
+

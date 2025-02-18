@@ -24,7 +24,6 @@ class DestinationController extends Controller
 
     public function showSejours($id)
     {
-        // Trouver la destination avec les séjours
         $destination = Destination::with('sejours')->find($id);
 
         if (!$destination) {
@@ -36,10 +35,8 @@ class DestinationController extends Controller
 
     public function showSejourss($num_destination_sejour)
     {
-        // Récupérer la destination sélectionnée
         $destination = Destination::where('num_destination_sejour', $num_destination_sejour)->first();
 
-        // Passer toutes les destinations et la destination sélectionnée à la vue
         $destinations = Destination::all();
         $sejours = Sejour::with('categorieParticipants', 'destination_sejour')->get();
         $categorie_participant = CategorieParticipant::all();

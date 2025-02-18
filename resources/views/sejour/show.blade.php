@@ -86,7 +86,7 @@
         @endif
     </div>
 
-    <form action="{{ route('panier.ajouter.cadeau') }}" method="POST" id="panier-form">
+    <form action="{{ route('panier.ajouter.article') }}" method="POST" id="panier-form">
         @csrf
         <input type="hidden" name="sejour_id" value="{{ $sejour->refsejour }}">
         <input type="hidden" name="mode_cadeau" id="mode_cadeau" value="0">
@@ -142,4 +142,7 @@
         </div>
     @endif
 </div>
+<!-- 
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
 @endsection

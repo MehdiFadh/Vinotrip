@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/route_de_vins.css') }}">
 
 <div class="route_de_vins-container">
     <h1>Route des Vins</h1>

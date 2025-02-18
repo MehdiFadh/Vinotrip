@@ -48,7 +48,7 @@
                     <td>
                         <form action="{{ route('commandesEffectif.envoyerMailDisponibilite', $commande->numcommande) }}" method="GET">
                             @csrf
-                            <button type="submit" class="btn btn-primary">Mail vérification disponibilité hotel</button>
+                            <button type="submit" class="btn btn-primary">Mail vérification disponibilité hôtel</button>
                         </form>
                     </td>
                     
@@ -71,7 +71,7 @@
                     <td>
                         <form action="{{ route('commandeEffectif.RembourserClient', $commande->numcommande) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary">Rembouser client</button>
+                            <button type="submit" class="btn btn-primary">Rembouser le client</button>
                         </form>
                     </td>
 
@@ -81,7 +81,7 @@
                     <td>
                         <form action="{{ route('commandesEffectif.envoyerCarnetRoute', $commande->numcommande) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary">Envoyé carnet de route</button>
+                            <button type="submit" class="btn btn-primary">Envoyer le carnet de route</button>
                         </form>
                     </td>
 

@@ -13,9 +13,15 @@ class Etape extends Model
     protected $primaryKey = "id_etape";
     public $timestamps = false;
 
+    protected $fillable = [
+        'refsejour',
+        'titre_etape',
+        'description_etape',
+        'url_photo_etape',
+    ];
+
     public function elementEtapes()
     {
-        // Relation many-to-many via la table de liaison etape_element_etape
         return $this->belongsToMany(ElementEtape::class, 'etape_element_etape', 'id_etape', 'idelement_etape');
     }
 

@@ -16,7 +16,6 @@ class User extends Authenticatable
 
     public $incrementing = true;  
 
-    // Désactiver la gestion automatique des timestamps
     public $timestamps = false;
 
     protected $fillable = [
@@ -24,7 +23,7 @@ class User extends Authenticatable
         'prenomclient',
         'mailclient',
         'datenaissance',
-        'telclient',
+        'telclient',        
         'mot_de_passe_client',
         'datederniereactivite',
         'role',
@@ -44,7 +43,6 @@ class User extends Authenticatable
 
     public function anonymize()
     {
-        // Anonymiser les champs de l'utilisateur
         $this->update([
             'nomclient' => 'Anonyme',
             'prenomclient' => 'Anonyme',
@@ -53,9 +51,9 @@ class User extends Authenticatable
             'mot_de_passe_client' => bcrypt('anonyme'),
         ]);
 
-        // Anonymiser les adresses associées
         foreach ($this->adresses as $adresse) {
             $adresse->anonymize();
         }
     }
+    
 }

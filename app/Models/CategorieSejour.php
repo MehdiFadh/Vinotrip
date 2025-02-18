@@ -20,10 +20,10 @@ class CategorieSejour extends Model
     public function sejours()
     {
         return $this->belongsToMany(
-            Sejour::class,                      // Modèle lié
-            'sejour_categorie_sejour',     // Nom de la table intermédiaire
-            'idcategoriesejour',          // Colonne de clé étrangère dans la table intermédiaire pointant vers ce modèle
-            'refsejour'                         // Colonne de clé étrangère dans la table intermédiaire pointant vers le modèle Sejour
+            Sejour::class,                      
+            'sejour_categorie_sejour',     
+            'idcategoriesejour',          
+            'refsejour'                        
         );
     }
 }

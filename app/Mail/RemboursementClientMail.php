@@ -13,9 +13,6 @@ class RemboursementClientMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
     public function __construct($prixsejour)
     {
         $this->prixsejour = $prixsejour;

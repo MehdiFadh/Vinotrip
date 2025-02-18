@@ -13,9 +13,6 @@ class ValidationPartenaireMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
     public function __construct($numcommande, $dateDebut, $nomclient)
     {
         $this->numcommande = $numcommande;

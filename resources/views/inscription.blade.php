@@ -11,7 +11,7 @@
             </div>
         @endif
 
-        <!-- Affichage des messages d'erreur globaux -->
+        <!-- Affichage des messages d'erreur -->
         @if($errors->any())
             <div class="alert-inscription error">
                 <ul>
@@ -67,4 +67,7 @@
             <p>Déjà inscrit ? <a href="{{ route('login') }}">Connectez-vous ici</a></p>
         </div>
     </div>
+
+    <!-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
     @endsection

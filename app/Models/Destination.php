@@ -14,6 +14,10 @@ class Destination extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'nom_destination_sejour', 
+    ];
+
     public function sejours()
     {
         return $this->hasMany(Sejour::class, 'num_destination_sejour', 'num_destination_sejour');

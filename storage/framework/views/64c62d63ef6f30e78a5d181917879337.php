@@ -26,7 +26,7 @@
         <?php if(auth()->guard()->check()): ?>
         <a href="<?php echo e(route('commandes.historique')); ?>">Voir l'historique des commandes</a>
         <?php endif; ?>
-
+       
 
         <?php if(!empty($panier) && count($panier) > 0 ): ?>
             <div class="panier-item">
@@ -37,59 +37,84 @@
                 </form>
             </div>
             <?php $__currentLoopData = $panier; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="panier-item">
-                    <!-- Image -->
-                    <img src="<?php echo e(asset('img/img_sejour/' . $item['url_photo_sejour'])); ?>" 
-                         alt="<?php echo e($item['titresejour']); ?>" 
-                         class="panier-item-image">
-
-                    <!-- Détails du séjour -->
-                    <div class="panier-item-details">
-                        <h3><?php echo e($item['titresejour']); ?></h3>
-                        <p>Prix par adulte : <?php echo e($item['prix_sejour']); ?> €</p>
-                        <p>Prix par enfant : <?php echo e($item['prix_sejour']); ?> €</p>
-                        <p>Adultes : <?php echo e($item['adultes']); ?></p>
-                        <p>Enfants : <?php echo e($item['enfants']); ?></p>
-                        <p>Chambres : <?php echo e($item['chambres']); ?></p>
-                        <p class="panier-item-price">
-                            <strong>Prix total pour ce séjour : <?php echo e($item['prix_total']); ?> €</strong>
-                        </p>
-                    </div>
-
-                    <!-- Formulaires -->
-                    <div>
-                        <!-- Formulaire Modification -->
-                        <form action="<?php echo e(route('panier.modifier')); ?>" method="POST" class="panier-form">
-                            <?php echo csrf_field(); ?>
-                            <input type="hidden" name="sejour_id" value="<?php echo e($item['sejour_id']); ?>">
-                            <label for="adultes">Adultes :</label>
-                            <input type="number" name="adultes" value="<?php echo e($item['adultes']); ?>" min="0" class="panier-form-input">
-
-                            <label for="enfants">Enfants :</label>
-                            <input type="number" name="enfants" value="<?php echo e($item['enfants']); ?>" min="0" class="panier-form-input">
-
-                            <label for="chambres">Chambres :</label>
-                            <input type="number" name="chambres" value="<?php echo e($item['chambres']); ?>" min="0" class="panier-form-input">
-                            
-                            <?php if(isset($item['mode_cadeau']) && !$item['mode_cadeau']): ?> <!-- Si ce n'est pas un cadeau -->
-                                <label for="date_sejour_<?php echo e($item['sejour_id']); ?>">Début du séjour :</label>
-                                <input type="date" 
-                                    id="date_sejour_<?php echo e($item['sejour_id']); ?>" 
-                                    name="date_sejour" 
-                                    value="<?php echo e($item['date_sejour'] ?? date('Y-m-d')); ?>"
-                                    class="panier-form-input">
+                <?php if(isset($item['type']) && $item['type'] === 'cheque_cadeau'): ?>
+                    <!-- Affichage du chèque cadeau -->
+                    <div class="panier-item">
+                        <div class="panier-item-details">
+                            <h3>Chèque Cadeau</h3>
+                            <p><strong>Montant :</strong> <?php echo e($item['montant']); ?> €</p>
+                            <p><strong>Format :</strong> <?php echo e($item['format']); ?></p>
+                            <?php if(!empty($item['offert_par'])): ?>
+                                <p><strong>Offert par :</strong> <?php echo e($item['offert_par']); ?></p>
                             <?php endif; ?>
-                            <button type="submit" class="btn-edit">Modifier</button>
-                        </form>
+                            <?php if(!empty($item['message'])): ?>
+                                <p><strong>Message :</strong> <?php echo e($item['message']); ?></p>
+                            <?php endif; ?>
+                        </div>
 
                         <!-- Formulaire Suppression -->
                         <form action="<?php echo e(route('panier.supprimer')); ?>" method="POST" class="panier-form">
                             <?php echo csrf_field(); ?>
-                            <input type="hidden" name="sejour_id" value="<?php echo e($item['sejour_id']); ?>">
+                            <input type="hidden" name="sejour_id" value="<?php echo e($loop->index); ?>">
                             <button type="submit" class="btn-suppr">Supprimer</button>
                         </form>
                     </div>
-                </div>
+                <?php else: ?>
+                    <!-- Affichage du séjour -->
+                    <div class="panier-item">
+                        <!-- Image -->
+                        <img src="<?php echo e(asset('img/img_sejour/' . $item['url_photo_sejour'])); ?>" 
+                             alt="<?php echo e($item['titresejour']); ?>" 
+                             class="panier-item-image">
+
+                        <!-- Détails du séjour -->
+                        <div class="panier-item-details">
+                            <h3><?php echo e($item['titresejour']); ?></h3>
+                            <p>Prix par adulte : <?php echo e($item['prix_sejour']); ?> €</p>
+                            <p>Prix par enfant : <?php echo e($item['prix_sejour']); ?> €</p>
+                            <p>Adultes : <?php echo e($item['adultes']); ?></p>
+                            <p>Enfants : <?php echo e($item['enfants']); ?></p>
+                            <p>Chambres : <?php echo e($item['chambres']); ?></p>
+                            <p class="panier-item-price">
+                                <strong>Prix total pour ce séjour : <?php echo e($item['prix_total']); ?> €</strong>
+                            </p>
+                        </div>
+
+                        <!-- Formulaires -->
+                        <div>
+                            <!-- Formulaire Modification -->
+                            <form action="<?php echo e(route('panier.modifier')); ?>" method="POST" class="panier-form">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" name="sejour_id" value="<?php echo e($item['sejour_id']); ?>">
+                                <label for="adultes">Adultes :</label>
+                                <input type="number" name="adultes" value="<?php echo e($item['adultes']); ?>" min="0" class="panier-form-input">
+
+                                <label for="enfants">Enfants :</label>
+                                <input type="number" name="enfants" value="<?php echo e($item['enfants']); ?>" min="0" class="panier-form-input">
+
+                                <label for="chambres">Chambres :</label>
+                                <input type="number" name="chambres" value="<?php echo e($item['chambres']); ?>" min="0" class="panier-form-input">
+                                
+                                <?php if(isset($item['mode_cadeau']) && !$item['mode_cadeau']): ?> <!-- Si ce n'est pas un cadeau -->
+                                    <label for="date_sejour_<?php echo e($item['sejour_id']); ?>">Début du séjour :</label>
+                                    <input type="date" 
+                                        id="date_sejour_<?php echo e($item['sejour_id']); ?>" 
+                                        name="date_sejour" 
+                                        value="<?php echo e($item['date_sejour'] ?? date('Y-m-d')); ?>"
+                                        class="panier-form-input">
+                                <?php endif; ?>
+                                <button type="submit" class="btn-edit">Modifier</button>
+                            </form>
+
+                            <!-- Formulaire Suppression -->
+                            <form action="<?php echo e(route('panier.supprimer')); ?>" method="POST" class="panier-form">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" name="sejour_id" value="<?php echo e($item['sejour_id']); ?>">
+                                <button type="submit" class="btn-suppr">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             <!-- Formulaire Code Réduction -->
@@ -142,6 +167,8 @@
             <p class="panier-empty-message">Votre panier est vide.</p>
         <?php endif; ?>
     </div>
+
+
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         const messageTextarea = document.querySelector('#message_commande');

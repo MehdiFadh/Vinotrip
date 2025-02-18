@@ -34,4 +34,7 @@
         <h2>9 - Droit applicable</h2>
         <p>Les présentes Conditions sont régies par le droit français. En cas de litige, les tribunaux français seront compétents.</p>
     </div>
+
+    <!-- <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Vinotrip" agent-id="7b4ad48a-de71-45d7-b54f-bb72f83c4104" language-code="fr"></df-messenger> -->
 @endsection
